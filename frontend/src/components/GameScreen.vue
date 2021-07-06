@@ -1,30 +1,23 @@
 <template>
-  <div class="gamescreen" v-if="this.$store.state.logged">
-    
-  </div>
+  <div class="gamescreen" v-if="this.$store.state.logged"></div>
 </template>
 
 <script>
 export default {
-  name: 'GameScreen',
+  name: "GameScreen",
   data() {
-    return {
-
-    };
+    return {};
   },
-  methods: {
-    
-  }
-}
+  methods: {},
+};
 </script>
 
 <style scoped>
-
 .gamescreen {
   width: 60%;
   height: auto;
   min-height: 70vh;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   color: white;
   margin: auto;
   top: 10%;
@@ -35,5 +28,4 @@ export default {
   border: 1px solid black;
   border-radius: 3%;
 }
-
 </style>

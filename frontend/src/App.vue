@@ -7,17 +7,13 @@
 </template>
 
 <script>
-
 export default {
-  name: 'App',
-  components: {
-    
-  }
-}
+  name: "App",
+  components: {},
+};
 </script>
 
 <style>
-
 * {
   margin: 0;
 }
@@ -48,13 +44,10 @@ body::-webkit-scrollbar {
 }
 
 #cover {
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   margin: 0;
   padding: 0;
   height: 100vh;
   width: 100vw;
 }
-
-
-
 </style>
