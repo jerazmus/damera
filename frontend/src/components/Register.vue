@@ -1,6 +1,6 @@
 <template>
   <div class="register" v-if="this.$store.state.register">
-    <b-form @submit="submit" @reset="cancel">
+    <b-form @submit="register" @reset="cancel">
       <b-form-group
         id="input-group-1"
         label="Email address:"
@@ -39,8 +39,13 @@
           v-model="repeatPassword"
           type="password"
           placeholder="Repeat password"
+          :state="validate"
           required
         ></b-form-input>
+
+        <b-form-invalid-feedback id="input-live-feedback" v-if="this.password != ''">
+          Passwords don't match!
+        </b-form-invalid-feedback>
       </b-form-group>
 
       <b-button type="submit" variant="primary" class="shadow-none">Sign up</b-button>
@@ -59,12 +64,21 @@ export default {
       repeatPassword: ''
     };
   },
+  computed: {
+    validate() {
+      return this.password == this.repeatPassword ? true : false
+    }
+  },
   methods: {
-    submit(verify) {
-      if(verify) {
-      // tutaj strzał do API do bazy danych
-      } else {
+    register() {
+      if(this.password == this.repeatPassword) {
+        // tutaj strzał do API do bazy danych
+        alert("Correct!");
+        event.preventDefault();
+      }
+      else {
         alert("Passwords have to be the same!");
+        event.preventDefault();
       }
     },
     cancel() {
@@ -74,13 +88,6 @@ export default {
       this.$store.state.register = false;
       this.$store.state.login = true;
     },
-    validate() {
-      if(this.password !== this.repeatPassword) {
-        return false;
-      } else {
-        return true;
-      }
-    }
   }
 }
 </script>
@@ -112,15 +119,10 @@ input {
 }
 
 input:focus {
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgb(29, 29, 29);
   border: rgba(0,0,0,0.5);
   outline-style: none;
   box-shadow: none;
-}
-
-input:focus {
-  background-color: rgb(29, 29, 29);
-  border: rgba(0,0,0,0.5);
 }
 
 .btn-primary {
@@ -133,15 +135,16 @@ input:focus {
   border-color: rgb(53, 53, 53) !important;
 }
 
-.btn-danger {
+.btn-danger, .btn-danger:hover {
   background-color: rgba(0, 0, 0, 0) !important;
   border-color: rgba(0, 0, 0, 0) !important;
   color: white;
 }
 
-.btn-danger:hover {
-  background-color: rgba(0, 0, 0, 0) !important;
-  border-color: rgba(0, 0, 0, 0) !important;
+.form-control.is-valid, .form-control.is-valid:focus {
+  background-image: none;
+  border-color: transparent !important;
+  outline-style: none;
+  box-shadow: none;
 }
-
 </style>
