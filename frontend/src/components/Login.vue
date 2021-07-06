@@ -98,7 +98,8 @@ input:focus {
   border-color: rgb(53, 53, 53) !important;
 }
 
-.btn-outline-primary. .btn-outline-primary:hover {
+.btn-outline-primary,
+.btn-outline-primary:hover {
   background-color: rgba(0, 0, 0, 0) !important;
   border-color: rgba(0, 0, 0, 0) !important;
   color: white !important;
