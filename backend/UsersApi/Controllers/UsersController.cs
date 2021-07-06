@@ -10,7 +10,7 @@ using UsersApi.Repositories;
 
 namespace UsersApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -31,6 +31,18 @@ namespace UsersApi.Controllers
         public async Task<ActionResult<User>> GetUser(int id)
         {
             return await _userRepository.Get(id);
+        }
+
+        [HttpGet]
+        public async Task<List<String>> GetEmails()
+        {
+            return await _userRepository.GetEmails();
+        }
+
+        [HttpGet("{email}")]
+        public async Task<Boolean> VerifyEmail(string email)
+        {
+            return await _userRepository.VerifyEmail(email);
         }
 
         [HttpPost]
