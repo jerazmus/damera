@@ -28,11 +28,6 @@ namespace UsersApi.Repositories
         {
             return await _context.Users.Select(user => user.Email).ToListAsync();
         }
-        public async Task<Boolean> VerifyEmail(string email)
-        {
-            List<string> emailList = await _context.Users.Select(user => user.Email).ToListAsync();
-            return emailList.Any(e => e == email);
-        }
         public async Task<User> Create(User user)
         {
             _context.Users.Add(user);

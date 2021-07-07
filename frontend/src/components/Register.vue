@@ -96,18 +96,12 @@ export default {
     },
   },
   methods: {
-    register() {
+    async register() {
       if(this.passwordLength) {
         if(this.matchingPasswords) {
-          let check = axios.get(this.apiUrl + `VerifyEmail/${this.email}`);
-          if(check) {
-            alert("User taken!");
-          } else {
-            let userJSON = { email: this.email, password: this.password };
-            axios.post(this.apiUrl + `AddUser`, userJSON);
-            alert("User added!");
-            this.cancel();
-          }
+          let userJSON = { email: this.email, password: this.password };
+          axios.post(this.apiUrl + `AddUser`, userJSON);
+          this.cancel();
         } else {
           alert("Passwords don't match!");
         }
