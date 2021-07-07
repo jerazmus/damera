@@ -32,13 +32,13 @@ namespace UsersApi.Controllers
         {
             return await _userRepository.Get(id);
         }
-
+        /*
         [HttpGet]
         public async Task<List<String>> GetEmails()
         {
             return await _userRepository.GetEmails();
         }
-
+        */
         [HttpGet("{email}")]
         public async Task<Boolean> VerifyEmail(string email)
         {
@@ -51,7 +51,7 @@ namespace UsersApi.Controllers
             var newUser = await _userRepository.Create(user);
             return CreatedAtAction(nameof(GetUsers), new {id = newUser.UserID}, newUser);
         }
-
+        /*
         [HttpPut]
         public async Task<ActionResult<User>> UpdateUser(int id, [FromBody] User user)
         {
@@ -64,7 +64,7 @@ namespace UsersApi.Controllers
 
             return NoContent();
         }
-
+        */
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteUser(int id)
         {

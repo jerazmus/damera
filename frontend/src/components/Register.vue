@@ -1,6 +1,6 @@
 <template>
   <div class="register" v-if="this.$store.state.register">
-    <b-form @submit="register" @reset="cancel">
+    <b-form @submit.prevent="register" @reset.prevent="cancel">
       <b-form-group
         id="input-group-1"
         label="Email address:"
@@ -25,7 +25,10 @@
           required
         ></b-form-input>
 
-        <b-form-invalid-feedback :state="passwordLength" v-if="this.password = ''">
+        <b-form-invalid-feedback
+          :state="passwordLength"
+          v-if="this.password != ''"
+        >
           Password must be over 3 characters!
         </b-form-invalid-feedback>
       </b-form-group>
@@ -40,7 +43,7 @@
           v-model="repeatPassword"
           type="password"
           placeholder="Repeat password"
-          :state="validate"
+          :state="matchingPasswords"
           required
         ></b-form-input>
 
@@ -79,22 +82,37 @@ export default {
     };
   },
   computed: {
-    validate() {
+    matchingPasswords() {
       return this.password == this.repeatPassword ? true : false;
     },
     passwordLength() {
-      return this.password.length > 3 ? true : false;
+      if (this.password == "") {
+        return true;
+      } else if (this.password.length < 4 && this.password.length > 0) {
+        return false;
+      } else {
+        return true;
+      }
     },
   },
   methods: {
     register() {
-      if (this.password == this.repeatPassword) {
-        // tutaj strzał do API do bazy danych
-        alert("Correct!");
-        event.preventDefault();
+      if(this.passwordLength) {
+        if(this.matchingPasswords) {
+          let check = axios.get(this.apiUrl + `VerifyEmail/${this.email}`);
+          if(check) {
+            alert("User taken!");
+          } else {
+            let userJSON = { email: this.email, password: this.password };
+            axios.post(this.apiUrl + `AddUser`, userJSON);
+            alert("User added!");
+            this.cancel();
+          }
+        } else {
+          alert("Passwords don't match!");
+        }
       } else {
-        alert("Passwords have to be the same!");
-        event.preventDefault();
+        alert("Password is too short!");
       }
     },
     cancel() {

@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\backend",
+    "\\backend\\UsersApi",
+    "\\backend\\UsersApi\\Controllers",
+    "\\backend\\UsersApi\\Models",
+    "\\backend\\UsersApi\\Properties",
+    "\\backend\\UsersApi\\Repositories",
+    "\\frontend"
+  ],
+  "SelectedNode": "\\backend\\UsersApi\\Models\\User.cs",
+  "PreviewInSolutionExplorer": false
+}
