@@ -2,14 +2,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace UsersApi.Models
 {
-    public class UserContext : DbContext
+    public class TokenContext : DbContext
     {
-        public UserContext(DbContextOptions<UserContext> options)
+        public TokenContext(DbContextOptions<TokenContext> options)
             : base(options)
         {
             Database.EnsureCreated();
         }
 
-        public DbSet<User> User { get; set; }
+        public DbSet<Token> Token { get; set; }
     }
 }

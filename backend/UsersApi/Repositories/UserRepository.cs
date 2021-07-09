@@ -18,19 +18,19 @@ namespace UsersApi.Repositories
         }
         public async Task<IEnumerable<User>> Get()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.User.ToListAsync();
         }
         public async Task<User> Get(int id)
         {
-            return await _context.Users.FindAsync(id);
+            return await _context.User.FindAsync(id);
         }
         public async Task<List<String>> GetEmails()
         {
-            return await _context.Users.Select(user => user.Email).ToListAsync();
+            return await _context.User.Select(user => user.Email).ToListAsync();
         }
         public async Task<User> Create(User user)
         {
-            _context.Users.Add(user);
+            _context.User.Add(user);
             await _context.SaveChangesAsync();
             return user;
         }
@@ -41,9 +41,13 @@ namespace UsersApi.Repositories
         }
         public async Task Delete(int id)
         {
-            var userToDelete = await _context.Users.FindAsync(id);
-            _context.Users.Remove(userToDelete);
+            var userToDelete = await _context.User.FindAsync(id);
+            _context.User.Remove(userToDelete);
             await _context.SaveChangesAsync();
         }
+        
+
+
+
     }
 }
