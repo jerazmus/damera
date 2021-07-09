@@ -53,6 +53,10 @@ export default {
       this.$store.state.login = false;
     },
   },
+  mounted() {
+    this.email = "";
+    this.password = "";
+  }
 };
 </script>
 
