@@ -69,6 +69,7 @@
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
+
 Vue.use(VueAxios, axios);
 
 export default {
@@ -97,8 +98,8 @@ export default {
   },
   methods: {
     async register() {
-      if(this.passwordLength) {
-        if(this.matchingPasswords) {
+      if (this.passwordLength) {
+        if (this.matchingPasswords) {
           let userJSON = { email: this.email, password: this.password };
           axios.post(this.apiUrl + `AddUser`, userJSON);
           this.cancel();

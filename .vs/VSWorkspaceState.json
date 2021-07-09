@@ -9,6 +9,6 @@
     "\\backend\\UsersApi\\Repositories",
     "\\frontend"
   ],
-  "SelectedNode": "\\backend\\UsersApi\\Models\\User.cs",
+  "SelectedNode": "\\backend\\UsersApi\\Controllers\\UsersController.cs",
   "PreviewInSolutionExplorer": false
 }
