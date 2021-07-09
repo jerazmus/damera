@@ -29,6 +29,7 @@ namespace UsersApi.Controllers
             return await _userRepository.Get();
         }
 
+
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
@@ -41,10 +42,27 @@ namespace UsersApi.Controllers
             return await _userRepository.GetEmails();
         }
         */
+        /*
+        [HttpPost]
+        public async Task<ActionResult<User>> Login([FromBody] User user,[FromBody] Token token)
+        {
+            List<string> emailList = await _context.User.Select(user => user.Email).ToListAsync();
+            if(emailList.Any(e => e == user.Email))
+            {
+                var newToken = await _userRepository.Create(token);
+                return CreatedAtAction(nameof(GetUsers), new {id = newToken.TokenID}, newToken);
+            }
+            else
+            {
+                //throw new BadRequest("Email is wrong!");
+                return BadRequest("Email is wrong!");
+            }
+        }
+        */
         [HttpPost]
         public async Task<ActionResult<User>> AddUser([FromBody] User user)
         {
-            List<string> emailList = await _context.Users.Select(user => user.Email).ToListAsync();
+            List<string> emailList = await _context.User.Select(user => user.Email).ToListAsync();
             if(emailList.Any(e => e == user.Email))
             {
                 return BadRequest("Email is already taken!");
