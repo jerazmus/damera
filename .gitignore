@@ -6,6 +6,8 @@
 # .NET Core build folders
 bin/
 obj/
+
+# IDE config
 .vs/
 .vscode/*
 
