@@ -13,6 +13,12 @@
           placeholder="Enter email"
           required
         ></b-form-input>
+
+        <b-form-invalid-feedback
+          :state="emailCheck"
+        >
+          Email is already used!
+        </b-form-invalid-feedback>
       </b-form-group>
 
       <b-form-group id="input-group-2" label="Password:" label-for="input-2">
@@ -80,6 +86,7 @@ export default {
       password: "",
       repeatPassword: "",
       apiUrl: "https://localhost:5001/api/Users/",
+      emailCheck: true
     };
   },
   computed: {
@@ -101,8 +108,12 @@ export default {
       if (this.passwordLength) {
         if (this.matchingPasswords) {
           let userJSON = { email: this.email, password: this.password };
-          axios.post(this.apiUrl + `AddUser`, userJSON);
-          this.cancel();
+          axios.post(this.apiUrl + `AddUser`, userJSON)
+            .catch(function(error) {
+              if(error.response.status == 400) {
+                this.emailCheck = false;
+              }
+            });
         } else {
           alert("Passwords don't match!");
         }
