@@ -10,15 +10,17 @@ using UsersApi.Repositories;
 
 namespace UsersApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
+        private readonly UserContext _context;
 
-        public UsersController(IUserRepository userRepository)
+        public UsersController(IUserRepository userRepository, UserContext userContext)
         {
             _userRepository = userRepository;
+            _context = userContext;
         }
 
         [HttpGet]
@@ -32,14 +34,28 @@ namespace UsersApi.Controllers
         {
             return await _userRepository.Get(id);
         }
-
+        /*
+        [HttpGet]
+        public async Task<List<String>> GetEmails()
+        {
+            return await _userRepository.GetEmails();
+        }
+        */
         [HttpPost]
         public async Task<ActionResult<User>> AddUser([FromBody] User user)
         {
+            List<string> emailList = await _context.Users.Select(user => user.Email).ToListAsync();
+            if(emailList.Any(e => e == user.Email))
+            {
+                return BadRequest("Email is already taken!");
+            }
+            else
+            {
             var newUser = await _userRepository.Create(user);
             return CreatedAtAction(nameof(GetUsers), new {id = newUser.UserID}, newUser);
+            }
         }
-
+        /*
         [HttpPut]
         public async Task<ActionResult<User>> UpdateUser(int id, [FromBody] User user)
         {
@@ -52,7 +68,7 @@ namespace UsersApi.Controllers
 
             return NoContent();
         }
-
+        */
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteUser(int id)
         {

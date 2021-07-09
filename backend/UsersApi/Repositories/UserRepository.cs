@@ -24,6 +24,10 @@ namespace UsersApi.Repositories
         {
             return await _context.Users.FindAsync(id);
         }
+        public async Task<List<String>> GetEmails()
+        {
+            return await _context.Users.Select(user => user.Email).ToListAsync();
+        }
         public async Task<User> Create(User user)
         {
             _context.Users.Add(user);

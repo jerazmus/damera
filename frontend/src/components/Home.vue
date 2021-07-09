@@ -7,24 +7,22 @@
 </template>
 
 <script>
-import Login from './Login.vue'
-import Register from './Register.vue'
-import GameScreen from './GameScreen.vue'
+import Login from "./Login.vue";
+import Register from "./Register.vue";
+import GameScreen from "./GameScreen.vue";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     Login,
     Register,
-    GameScreen
+    GameScreen,
   },
-}
+};
 </script>
 
 <style scoped>
-
 .home {
   margin: 0;
 }
-
 </style>

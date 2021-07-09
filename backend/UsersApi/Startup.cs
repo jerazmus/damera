@@ -29,6 +29,8 @@ namespace UsersApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddDbContext<UserContext>(opt =>
                                                opt.UseSqlServer("Data Source=(local);Initial Catalog=Damera_DB;Integrated Security=True"));
@@ -42,6 +44,11 @@ namespace UsersApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(builder => builder
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin());
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
