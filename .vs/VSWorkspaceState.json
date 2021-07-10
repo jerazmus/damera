@@ -7,8 +7,10 @@
     "\\backend\\UsersApi\\Models",
     "\\backend\\UsersApi\\Properties",
     "\\backend\\UsersApi\\Repositories",
-    "\\frontend"
+    "\\frontend",
+    "\\frontend\\src",
+    "\\frontend\\src\\components"
   ],
-  "SelectedNode": "\\backend\\UsersApi\\Controllers\\UsersController.cs",
+  "SelectedNode": "\\backend\\UsersApi\\Startup.cs",
   "PreviewInSolutionExplorer": false
 }
