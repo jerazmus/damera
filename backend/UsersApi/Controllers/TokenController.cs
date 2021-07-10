@@ -48,7 +48,7 @@ namespace UsersApi.Controllers
                 var User = await _usercontext.User.FirstOrDefaultAsync(u => u.Email == user.Email); ;
                 //var hashedPassword = ASCIIEncoding.GetString(sha1data);
                 token.UserID = User.UserID;
-                token.UserToken = userToken;
+                token.UserToken = userToken.ToString();
                 token.CreateDate = DateTime.Now;
                 token.ExpirationDate = DateTime.Now.AddHours(6);
                 var newToken = await _tokenRepository.Create(token);
