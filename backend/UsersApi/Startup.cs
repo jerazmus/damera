@@ -32,7 +32,10 @@ namespace UsersApi
             services.AddCors();
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ITokenRepository, TokenRepository>();
             services.AddDbContext<UserContext>(opt =>
+                                               opt.UseSqlServer("Data Source=(local);Initial Catalog=Damera_DB;Integrated Security=True"));
+            services.AddDbContext<TokenContext>(opt =>
                                                opt.UseSqlServer("Data Source=(local);Initial Catalog=Damera_DB;Integrated Security=True"));
             services.AddControllers();
             services.AddSwaggerGen(c =>
