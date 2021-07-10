@@ -49,7 +49,7 @@ namespace UsersApi.Controllers
             List<string> emailList = await _context.User.Select(user => user.Email).ToListAsync();
             if(emailList.Any(e => e == user.Email))
             {
-                var newToken = await _userRepository.Create(token);
+                var newToken = await _tokenRepository.Create(token);
                 return CreatedAtAction(nameof(GetUsers), new {id = newToken.TokenID}, newToken);
             }
             else
