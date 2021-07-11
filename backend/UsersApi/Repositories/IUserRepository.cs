@@ -10,7 +10,6 @@ namespace UsersApi.Repositories
     {
         Task<IEnumerable<User>> Get();
         Task<User> Get(int id);
-        Task<List<String>> GetEmails();
         Task <User>Create(User user);
         Task Update(User user);
         Task Delete(int id);

@@ -35,12 +35,6 @@ namespace UsersApi.Controllers
         {
             return await _userRepository.Get(id);
         }
-        
-        [HttpGet]
-        public async Task<List<String>> GetEmails()
-        {
-            return await _userRepository.GetEmails();
-        }
 
         [HttpPost]
         public async Task<ActionResult<User>> AddUser([FromBody] User user)
