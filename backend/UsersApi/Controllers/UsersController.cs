@@ -35,30 +35,13 @@ namespace UsersApi.Controllers
         {
             return await _userRepository.Get(id);
         }
-        /*
+        
         [HttpGet]
         public async Task<List<String>> GetEmails()
         {
             return await _userRepository.GetEmails();
         }
-        */
-        /*
-        [HttpPost]
-        public async Task<ActionResult<User>> Login([FromBody] User user,[FromBody] Token token)
-        {
-            List<string> emailList = await _context.User.Select(user => user.Email).ToListAsync();
-            if(emailList.Any(e => e == user.Email))
-            {
-                var newToken = await _tokenRepository.Create(token);
-                return CreatedAtAction(nameof(GetUsers), new {id = newToken.TokenID}, newToken);
-            }
-            else
-            {
-                //throw new BadRequest("Email is wrong!");
-                return BadRequest("Email is wrong!");
-            }
-        }
-        */
+
         [HttpPost]
         public async Task<ActionResult<User>> AddUser([FromBody] User user)
         {
@@ -73,7 +56,7 @@ namespace UsersApi.Controllers
             return CreatedAtAction(nameof(GetUsers), new {id = newUser.UserID}, newUser);
             }
         }
-        /*
+        
         [HttpPut]
         public async Task<ActionResult<User>> UpdateUser(int id, [FromBody] User user)
         {
@@ -86,7 +69,7 @@ namespace UsersApi.Controllers
 
             return NoContent();
         }
-        */
+        
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteUser(int id)
         {
