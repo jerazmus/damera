@@ -31,7 +31,7 @@ namespace UsersApi.Repositories
 
         public async Task<Token> Get(int userID)
         {
-            return _context.Token.Where(b => b.UserID == userID).FirstOrDefault();
+            return await _context.Token.Where(b => b.UserID == userID).FirstOrDefaultAsync();
         }
 
         public async Task Delete(int userID)
