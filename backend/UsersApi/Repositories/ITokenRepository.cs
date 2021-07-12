@@ -10,5 +10,7 @@ namespace UsersApi.Repositories
     {
         Task<Token> Create(Token token);
         Task<IEnumerable<Token>> Get();
+        Task<Token> Get(int userID);
+        Task Delete(int userID);
     }
 }

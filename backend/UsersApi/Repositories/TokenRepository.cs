@@ -29,6 +29,19 @@ namespace UsersApi.Repositories
             return await _context.Token.ToListAsync();
         }
 
+        public async Task<Token> Get(int userID)
+        {
+            return await _context.Token.Where(b => b.UserID == userID).FirstOrDefaultAsync();
+        }
+
+        public async Task Delete(int userID)
+        {
+            var tokenToDelete = _context.Token.Where(b => b.UserID == userID).FirstOrDefault();
+            _context.Token.Remove(tokenToDelete);
+            await _context.SaveChangesAsync();
+        }
+
+
 
 
     }
