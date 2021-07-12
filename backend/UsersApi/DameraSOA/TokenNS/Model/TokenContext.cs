@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace UsersApi.Models
+namespace UsersApi.DameraSOA.TokenNS.Model
 {
     public class TokenContext : DbContext
     {

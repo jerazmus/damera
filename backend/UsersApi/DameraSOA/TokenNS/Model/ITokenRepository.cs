@@ -2,15 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UsersApi.Models;
 
-namespace UsersApi.Repositories
+namespace UsersApi.DameraSOA.TokenNS.Model
 {
     public interface ITokenRepository
     {
-        Task<Token> Create(Token token);
-        Task<IEnumerable<Token>> Get();
-        Task<Token> Get(int userID);
+        Task<IEnumerable<Token>> Find();
+        Task<Token> FindOne(int userID);
+        Task<Token> Save(Token token);
         Task Delete(int userID);
     }
 }

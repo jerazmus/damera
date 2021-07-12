@@ -2,12 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UsersApi.Models;
-using UsersApi.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace UsersApi.Repositories
+namespace UsersApi.DameraSOA.TokenNS.Model
 {
     public class TokenRepository : ITokenRepository
     {
@@ -18,18 +16,19 @@ namespace UsersApi.Repositories
             _context = context;
         }
         
-        public async Task<Token> Create(Token token)
+        public async Task<Token> Save(Token token)
         {
             _context.Token.Add(token);
             await _context.SaveChangesAsync();
             return token;
         }
-        public async Task<IEnumerable<Token>> Get()
+
+        public async Task<IEnumerable<Token>> Find()
         {
             return await _context.Token.ToListAsync();
         }
 
-        public async Task<Token> Get(int userID)
+        public async Task<Token> FindOne(int userID)
         {
             return await _context.Token.Where(b => b.UserID == userID).FirstOrDefaultAsync();
         }
