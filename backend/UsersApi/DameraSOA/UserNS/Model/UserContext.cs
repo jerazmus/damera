@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace UsersApi.Models
+namespace UsersApi.DameraSOA.UserNS.Model
 {
     public class UserContext : DbContext
     {

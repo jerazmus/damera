@@ -153,3 +153,4 @@ yarn-error.log
 vetur.config.js
 
 # End of https://www.toptal.com/developers/gitignore/api/node,dotnetcore,vue,vuejs
+backend/UsersApi/.vs/UsersApi/v16/.suo

@@ -1,4 +1,4 @@
-namespace UsersApi.Models
+namespace UsersApi.DameraSOA.UserNS.Model
 {
     public class User
     {

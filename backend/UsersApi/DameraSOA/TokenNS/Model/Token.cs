@@ -1,6 +1,6 @@
 using System;
 
-namespace UsersApi.Models
+namespace UsersApi.DameraSOA.TokenNS.Model
 {
     public class Token
     {

@@ -2,15 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UsersApi.Models;
 
-namespace UsersApi.Repositories
+namespace UsersApi.DameraSOA.UserNS.Model
 {
     public interface IUserRepository
     {
-        Task<IEnumerable<User>> Get();
-        Task<User> Get(int id);
-        Task <User>Create(User user);
+        Task<IEnumerable<User>> FindAll();
+        Task<User> FindOne(int id);
+        Task<Boolean> UserExists(string email);
+        Task<User> Save(User user);
         Task Update(User user);
         Task Delete(int id);
     }

@@ -7,41 +7,37 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using UsersApi.Models;
-using UsersApi.Repositories;
-
-namespace UsersApi.Controllers
+using UsersApi.DameraSOA.TokenNS.Model;
+using UsersApi.DameraSOA.TokenNS.Service;
+using UsersApi.DameraSOA.UserNS.Model;
+/*
+namespace UsersApi.DameraAPI.TokenNS.Controller
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class TokenController : ControllerBase
     {
-        private readonly ITokenRepository _tokenRepository;
-        private readonly TokenContext _context;
-        private readonly UserContext _usercontext;
+        private readonly ITokenCommandHandler _tokenCommandHandler;
+        private readonly ITokenQueryHandler _tokenQueryHandler;
 
-        public TokenController(ITokenRepository tokenRepository, TokenContext tokenContext, UserContext userContext)
+        public TokenController(ITokenCommandHandler tokenCommandHandler, ITokenQueryHandler tokenQueryHandler)
         {
-            _tokenRepository = tokenRepository;
-            _context = tokenContext;
-            _usercontext = userContext;
+            _tokenCommandHandler = tokenCommandHandler;
+            _tokenQueryHandler = tokenQueryHandler;
         }
 
         [HttpGet]
         public async Task<IEnumerable<Token>> GetTokens()
         {
-            return await _tokenRepository.Get();
+            return await _tokenQueryHandler.Get();
         }
-
+        /*
         [HttpPost]
         public async Task<ActionResult<Token>> Login([FromBody] User user)
         {
             List<string> emailList = await _usercontext.User.Select(user => user.Email).ToListAsync();
             if(emailList.Any(e => e == user.Email))
             {
-
-               
-
                 var User = await _usercontext.User.FirstOrDefaultAsync(u => u.Email == user.Email);
 
                 Random rand = new Random();
@@ -80,14 +76,13 @@ namespace UsersApi.Controllers
         [HttpPost]
         public ActionResult<bool> Verify()
         {
-
             string cookieLogin = Request.Cookies["DameraLogin"];
             string cookieToken = Request.Cookies["DameraToken"];
             if (cookieLogin != null && cookieToken != null)
             {
-                return true;
+                return Ok();
             }
-            return false;
+            return NotFound();
         }
 
         [HttpDelete("{id}")]
@@ -101,3 +96,4 @@ namespace UsersApi.Controllers
 
     }
 }
+*/

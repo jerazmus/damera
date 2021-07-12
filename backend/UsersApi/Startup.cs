@@ -12,8 +12,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
-using UsersApi.Models;
-using UsersApi.Repositories;
+using UsersApi.DameraSOA.UserNS.Model;
+using UsersApi.DameraSOA.TokenNS.Model;
+using UsersApi.DameraSOA.UserNS.Service;
 
 namespace UsersApi
 {
@@ -31,6 +32,8 @@ namespace UsersApi
         {
             services.AddCors();
 
+            services.AddScoped<IUserQueryHandler, UserQueryHandler>();
+            services.AddScoped<IUserCommandHandler, UserCommandHandler>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ITokenRepository, TokenRepository>();
             services.AddDbContext<UserContext>(opt =>
