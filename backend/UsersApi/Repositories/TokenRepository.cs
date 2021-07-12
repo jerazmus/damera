@@ -28,10 +28,15 @@ namespace UsersApi.Repositories
         {
             return await _context.Token.ToListAsync();
         }
-        public async Task Delete(int id)
+
+        public async Task<Token> Get(int userID)
         {
-            //var tokenToDelete = await _context.Token.FindAsync(user);
-            var tokenToDelete = _context.Token.Where(b => b.UserID == id).FirstOrDefault();
+            return _context.Token.Where(b => b.UserID == userID).FirstOrDefault();
+        }
+
+        public async Task Delete(int userID)
+        {
+            var tokenToDelete = _context.Token.Where(b => b.UserID == userID).FirstOrDefault();
             _context.Token.Remove(tokenToDelete);
             await _context.SaveChangesAsync();
         }

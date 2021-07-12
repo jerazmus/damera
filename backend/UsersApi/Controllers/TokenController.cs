@@ -42,7 +42,7 @@ namespace UsersApi.Controllers
 
                
 
-                var User = await _usercontext.User.FirstOrDefaultAsync(u => u.Email == user.Email); ;
+                var User = await _usercontext.User.FirstOrDefaultAsync(u => u.Email == user.Email);
 
                 Random rand = new Random();
 
@@ -88,6 +88,15 @@ namespace UsersApi.Controllers
                 return true;
             }
             return false;
+        }
+
+        [HttpDelete("{id}")]
+        public async Task Logout(int id)
+        {
+            var User = await _usercontext.User.FirstOrDefaultAsync(u => u.UserID == id);
+            await _tokenRepository.Delete(User.UserID);
+            Response.Cookies.Delete("DameraLogin");
+            Response.Cookies.Delete("DameraToken");
         }
 
     }
