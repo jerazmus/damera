@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -10,9 +11,11 @@ namespace UsersApi.DameraSOA.UserNS.Model
     public class UserRepository : IUserRepository
     {
         private readonly UserContext _context;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UserRepository(UserContext context) {
+        public UserRepository(UserContext context, IHttpContextAccessor httpContextAccessor) {
             _context = context;
+            this._httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<IEnumerable<User>> FindAll()
@@ -23,6 +26,25 @@ namespace UsersApi.DameraSOA.UserNS.Model
         public async Task<User> FindOne(int id)
         {
             return await _context.User.FindAsync(id);
+        }
+
+        public async Task<User> FindOne(string email)
+        {
+            return await _context.User.FirstOrDefaultAsync(user => user.Email == email);//_context.User.FindAsync(email);
+        }
+
+        public async Task GenerateCookies(string email, string userToken)
+        {
+            CookieOptions cookieOptions = new CookieOptions();
+            cookieOptions.Expires = DateTime.Now.AddHours(6);
+            _httpContextAccessor.HttpContext.Response.Cookies.Append("DameraToken", userToken, cookieOptions);
+            _httpContextAccessor.HttpContext.Response.Cookies.Append("DameraLogin", email, cookieOptions);
+        }
+
+        public async Task DeleteCookies()
+        {
+            _httpContextAccessor.HttpContext.Response.Cookies.Delete("DameraLogin");
+            _httpContextAccessor.HttpContext.Response.Cookies.Delete("DameraToken");
         }
 
         public async Task<User> Save(User user)
@@ -57,5 +79,11 @@ namespace UsersApi.DameraSOA.UserNS.Model
                 return false;
             }
         }
+
+        public async Task<bool> PasswordSignInAsync(string email, string password)
+        {
+            return _context.User.Where(user => user.Email == email).Any(user => user.Password == password);
+        }
+
     }
 }

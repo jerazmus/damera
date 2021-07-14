@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,6 +24,18 @@ namespace UsersApi.DameraSOA.TokenNS.Service
         public Task<Token> Get(int userID)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<bool> Verify()
+        {
+            if(await _tokenRepository.CheckCookies())
+            {
+                throw new NotImplementedException("true");
+            }
+            else
+            {
+                throw new NotImplementedException("false");
+            }     
         }
     }
 }
