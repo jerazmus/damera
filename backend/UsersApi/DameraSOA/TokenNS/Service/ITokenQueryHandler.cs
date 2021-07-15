@@ -10,5 +10,6 @@ namespace UsersApi.DameraSOA.TokenNS.Service
     {
         Task<IEnumerable<Token>> Get();
         Task<Token> Get(int userID);
+        Task<bool> Verify();
     }
 }

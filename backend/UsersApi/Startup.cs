@@ -15,6 +15,10 @@ using Microsoft.EntityFrameworkCore;
 using UsersApi.DameraSOA.UserNS.Model;
 using UsersApi.DameraSOA.TokenNS.Model;
 using UsersApi.DameraSOA.UserNS.Service;
+using UsersApi.DameraSOA.TokenNS.Service;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace UsersApi
 {
@@ -31,9 +35,13 @@ namespace UsersApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-
+            services.AddHttpContextAccessor();
+            //services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IUserQueryHandler, UserQueryHandler>();
             services.AddScoped<IUserCommandHandler, UserCommandHandler>();
+            services.AddScoped<ITokenQueryHandler, TokenQueryHandler>();
+            services.AddScoped<ITokenCommandHandler, TokenCommandHandler>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ITokenRepository, TokenRepository>();
             services.AddDbContext<UserContext>(opt =>

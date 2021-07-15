@@ -9,7 +9,9 @@ namespace UsersApi.DameraSOA.TokenNS.Model
     {
         Task<IEnumerable<Token>> Find();
         Task<Token> FindOne(int userID);
+        Task<Token> Generate(int id);
         Task<Token> Save(Token token);
         Task Delete(int userID);
+        Task<bool> CheckCookies();
     }
 }

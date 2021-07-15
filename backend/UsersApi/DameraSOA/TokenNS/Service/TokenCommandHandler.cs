@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Security.Authentication;
 using System.Threading.Tasks;
 using UsersApi.DameraSOA.TokenNS.Model;
 using UsersApi.DameraSOA.UserNS.Model;
-/*
+
 namespace UsersApi.DameraSOA.TokenNS.Service
 {
     public class TokenCommandHandler : ITokenCommandHandler
@@ -16,6 +16,7 @@ namespace UsersApi.DameraSOA.TokenNS.Service
         {
             _tokenRepository = tokenRepository;
             _userRepository = userRepository;
+           
         }
 
         public Task<Token> Create(Token token)
@@ -23,49 +24,33 @@ namespace UsersApi.DameraSOA.TokenNS.Service
             throw new NotImplementedException();
         }
 
-        public Task Delete(int userID)
+        public async Task<Token> Login(User user)
         {
-            throw new NotImplementedException();
-        }
-        /*
-        public Task<Token> Login(User user)
-        {
-            if (_userRepository.UserExists(user.Email).Result)
+            //todo walidacja
+            if (_userRepository.PasswordSignInAsync(user.Email,user.Password).Result)
             {
-                var User = await _usercontext.User.FirstOrDefaultAsync(u => u.Email == user.Email);
 
-                Random rand = new Random();
-
-                string textToken = rand.Next(1, 10) + user.Email + rand.Next(1, 10) + DateTime.Now + rand.Next(1, 10);
-                var data = Encoding.ASCII.GetBytes(textToken);
-                var sha1 = new SHA1CryptoServiceProvider();
-                var userToken = sha1.ComputeHash(data);
-
+                User User = _userRepository.FindOne(user.Email).Result;
                 //var hashedPassword = ASCIIEncoding.GetString(sha1data);
+                Token token = await _tokenRepository.Generate(User.UserID);
+                //await _tokenRepository.Delete(User.UserID);
+                var newToken = await _tokenRepository.Save(token);
+                await _userRepository.GenerateCookies(User.Email, token.UserToken);
 
-                Token token = new Token();
-
-                token.UserID = User.UserID;
-                token.UserToken = Convert.ToBase64String(userToken);
-                token.CreateDate = DateTime.Now;
-                token.ExpirationDate = DateTime.Now.AddHours(6);
-
-                await _tokenRepository.Delete(User.UserID);
-                var newToken = await _tokenRepository.Create(token);
-
-                CookieOptions cookieOptions = new CookieOptions();
-                cookieOptions.Expires = DateTime.Now.AddHours(6);
-                Response.Cookies.Append("DameraToken", Convert.ToBase64String(userToken), cookieOptions);
-                Response.Cookies.Append("DameraLogin", user.Email, cookieOptions);
-
-                return CreatedAtAction(nameof(GetTokens), new { id = newToken.TokenID }, newToken);
+                return newToken;
             }
             else
             {
-                //throw new BadRequest("Email is wrong!");
-                return BadRequest("Email is wrong!");
+                throw new AuthenticationException("Incorrect credentials!");
             }
         }
+
+        public async Task Delete(int userID)
+        {
+            var User = await _userRepository.FindOne(userID);
+            await _tokenRepository.Delete(User.UserID);
+            await _userRepository.DeleteCookies();
+        }
+        
     }
 }
-*/
