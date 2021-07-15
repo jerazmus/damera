@@ -9,7 +9,7 @@ namespace UsersApi.DameraSOA.TokenNS.Service
     public interface ITokenQueryHandler
     {
         Task<IEnumerable<Token>> Get();
-        Task<Token> Get(int userID);
+        Task<Token> Get(int id);
         Task<bool> Verify();
     }
 }

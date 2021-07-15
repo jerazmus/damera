@@ -44,7 +44,7 @@ namespace UsersApi.DameraSOA.UserNS.Service
             {
                 throw new KeyNotFoundException("User not found!");
             }
-            await _userRepository.Delete(userToDelete.UserID);
+            await _userRepository.Delete(userToDelete.ID);
         }
     }
 }

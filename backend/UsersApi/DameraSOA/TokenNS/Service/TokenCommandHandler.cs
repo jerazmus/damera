@@ -32,7 +32,7 @@ namespace UsersApi.DameraSOA.TokenNS.Service
 
                 User User = _userRepository.FindOne(user.Email).Result;
                 //var hashedPassword = ASCIIEncoding.GetString(sha1data);
-                Token token = await _tokenRepository.Generate(User.UserID);
+                Token token = await _tokenRepository.Generate(User.ID);
                 //await _tokenRepository.Delete(User.UserID);
                 var newToken = await _tokenRepository.Save(token);
                 await _userRepository.GenerateCookies(User.Email, token.UserToken);
@@ -48,7 +48,7 @@ namespace UsersApi.DameraSOA.TokenNS.Service
         public async Task Delete(int userID)
         {
             var User = await _userRepository.FindOne(userID);
-            await _tokenRepository.Delete(User.UserID);
+            await _tokenRepository.Delete(User.ID);
             await _userRepository.DeleteCookies();
         }
         
