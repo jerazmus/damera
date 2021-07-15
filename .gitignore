@@ -8,6 +8,7 @@ bin/
 obj/
 .vs/*
 .vs
+.vs\UsersApi\v16\.suo
 
 # Common node modules locations
 /node_modules
