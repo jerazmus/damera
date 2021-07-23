@@ -12,12 +12,12 @@ namespace UsersApi.DameraAPI.UserNS.Controller
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly IUserCommandHandler _userCommandHandler;
         private readonly IUserQueryHandler _userQueryHandler;
 
-        public UsersController(IUserCommandHandler userCommandHandler, IUserQueryHandler userQueryHandler)
+        public UserController(IUserCommandHandler userCommandHandler, IUserQueryHandler userQueryHandler)
         {
             _userCommandHandler = userCommandHandler;
             _userQueryHandler = userQueryHandler;
