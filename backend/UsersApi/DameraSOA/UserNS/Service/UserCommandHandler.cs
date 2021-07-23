@@ -19,7 +19,7 @@ namespace UsersApi.DameraSOA.UserNS.Service
         {
             if (_userRepository.UserExists(user.Email).Result)
             {
-                throw new DuplicateWaitObjectException("Email is already registered!"); //ichuj;
+                throw new DuplicateWaitObjectException("Email is already registered!");
             }
             else
             {
