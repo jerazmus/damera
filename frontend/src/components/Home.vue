@@ -1,22 +1,17 @@
 <template>
   <div class="home">
-    <Login />
-    <Register />
-    <GameScreen />
+    <p id="title">dam<span class="era">era</span>.</p>
+    <Forms />
   </div>
 </template>
 
 <script>
-import Login from "./Login.vue";
-import Register from "./Register.vue";
-import GameScreen from "./GameScreen.vue";
+import Forms from "./Forms.vue"
 
 export default {
   name: "Home",
   components: {
-    Login,
-    Register,
-    GameScreen,
+    Forms,
   },
 };
 </script>
@@ -24,5 +19,18 @@ export default {
 <style scoped>
 .home {
   margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+#title {
+  position: absolute;
+  font-size: 200px;
+  left: 14%;
+  top: 5%;
+  color: rgb(241, 163, 85)
+}
+
+.era {
+  color: black;
 }
 </style>
