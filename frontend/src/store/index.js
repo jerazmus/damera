@@ -5,10 +5,9 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    register: false,
-    login: true,
+    registerView: true,
+    loginView: false,
     logged: false,
-    userID: null,
     userEmail: null,
   },
   getters: {},
