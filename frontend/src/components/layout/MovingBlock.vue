@@ -59,4 +59,51 @@ export default {
   transform: translateX(0px);
   opacity: 0;
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .left,
+  .right {
+    width: 75%;
+  }
+
+  .left {
+    left: 5%;
+  }
+
+  .right {
+    left: 20%;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+  .left,
+  .right {
+    width: 75%;
+  }
+
+  .left {
+    left: 5%;
+  }
+
+  .right {
+    left: 20%;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 993px) and (max-width: 1199px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+}
 </style>

@@ -65,7 +65,6 @@ export default {
 .login {
   width: 45%;
   height: 120%;
-  /*background-color: rgba(255, 255, 255, 1);*/
   color: black;
   margin: auto;
   top: -10%;
@@ -73,13 +72,13 @@ export default {
   z-index: 10;
   position: absolute;
   padding: 20px;
-  /*box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 15px;*/
 }
 
 h1 {
   margin-top: 0%;
   margin-bottom: 5%;
   color: rgb(241, 163, 85);
+  user-select: none; 
 }
 
 span {
@@ -89,6 +88,7 @@ span {
 button {
   margin: 1px;
   margin-top: 5%;
+  user-select: none; 
 }
 
 .forget,
@@ -126,6 +126,7 @@ input:focus {
 .btn-primary {
   background-color: rgb(241, 163, 85);
   border-color: transparent !important;
+  user-select: none; 
 }
 
 .btn-primary:hover {
@@ -145,5 +146,82 @@ input:focus {
 .slide-fade-leave-to {
   transform: translateX(0px);
   opacity: 0;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .login {
+    width: 75%;
+    height: 120%;
+    color: black;
+    margin: auto;
+    top: -10%;
+    left: 20%;
+    z-index: 10;
+    position: absolute;
+    padding: 20px;
+  }
+
+  .login-button {
+    width: 100%;
+  }
+
+  .forget {
+    width: 100%;
+  }
+
+  h1 {
+    margin-top: 15%;
+  }
+
+  input {
+    width: 100%;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+  .login {
+    width: 75%;
+    height: 120%;
+    color: black;
+    margin: auto;
+    top: -10%;
+    left: 20%;
+    z-index: 10;
+    position: absolute;
+    padding: 20px;
+  }
+
+  .login-button {
+    width: 100%;
+  }
+
+  .forget {
+    width: 100%;
+  }
+
+  h1 {
+    margin-top: 15%;
+  }
+
+  input {
+    width: 100%;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 993px) and (max-width: 1199px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
 }
 </style>
