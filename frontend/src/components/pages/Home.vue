@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Forms from "./Forms.vue"
+import Forms from "../layout/Forms.vue"
 
 export default {
   name: "Home",

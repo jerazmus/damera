@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import Login from "./Login.vue";
-import Register from "./Register.vue";
+import Login from "../actions/Login.vue";
+import Register from "../actions/Register.vue";
 import LoginOff from "./LoginOff.vue";
 import RegisterOff from "./RegisterOff.vue";
 import MovingBlock from "./MovingBlock.vue";
