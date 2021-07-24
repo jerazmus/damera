@@ -156,14 +156,11 @@ h1 {
   margin-top: 0%;
   margin-bottom: 5%;
   color: rgb(241, 163, 85);
+  user-select: none; 
 }
 
 span {
   color: black;
-}
-
-button {
-  margin-left: 70%;
 }
 
 input {
@@ -174,10 +171,6 @@ input {
   padding: 0;
   color: rgba(0, 0, 0, 0.15) !important;
   width: 90%;
-}
-
-.b-form-input {
-  border: 1px solid black;
 }
 
 input:focus {
@@ -191,6 +184,8 @@ input:focus {
 .btn-primary {
   background-color: rgb(241, 163, 85) !important;
   border-color: transparent !important;
+  margin-left: 70%;
+  user-select: none; 
 }
 
 .btn-primary:hover {
@@ -230,5 +225,47 @@ input:focus {
 .slide-fade-leave-to {
   transform: translateX(0px);
   opacity: 0;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .register {
+    width: 75%;
+  }
+
+  .btn-primary {
+    width: 100%;
+    margin: 0;
+  }
+
+  h1 {
+    margin-top: 10%;
+  }
+
+  input,
+  .form-control.is-valid,
+  .form-control.is-valid:focus {
+    width: 100%;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
 }
 </style>
