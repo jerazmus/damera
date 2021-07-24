@@ -49,6 +49,8 @@ namespace UsersApi.DameraSOA.UserNS.Model
 
         public async Task<User> Save(User user)
         {
+            string passwordHash = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            user.Password = passwordHash;
             _context.User.Add(user);
             await _context.SaveChangesAsync();
             return user;
