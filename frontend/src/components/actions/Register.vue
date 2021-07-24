@@ -250,17 +250,34 @@ input:focus {
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+  .register {
+    width: 75%;
+  }
 
+  .btn-primary {
+    width: 100%;
+    margin: 0;
+  }
+
+  h1 {
+    margin-top: 10%;
+  }
+
+  input,
+  .form-control.is-valid,
+  .form-control.is-valid:focus {
+    width: 100%;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 992px) {
 
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 993px) and (max-width: 1199px) {
 
 }
 

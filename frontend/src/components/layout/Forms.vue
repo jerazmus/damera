@@ -59,18 +59,36 @@ export default {
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+  .forms {
+    width: 100vw;
+    min-height: 50vh;
+    left: 0%;
+    top: 35%;
+    padding: 0;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .forms {
+    width: 100vw;
+    min-height: 30vh;
+    left: 0%;
+    top: 35%;
+    padding: 0;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-
+@media only screen and (min-width: 993px) and (max-width: 1199px) {
+  .forms {
+    width: 100vw;
+    min-height: 25vh;
+    left: 0%;
+    top: 25%;
+    padding: 0;
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */

@@ -77,17 +77,28 @@ export default {
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+  .left,
+  .right {
+    width: 75%;
+  }
 
+  .left {
+    left: 5%;
+  }
+
+  .right {
+    left: 20%;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 992px) {
 
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 993px) and (max-width: 1199px) {
 
 }
 

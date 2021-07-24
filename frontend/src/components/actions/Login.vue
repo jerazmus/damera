@@ -180,17 +180,43 @@ input:focus {
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+  .login {
+    width: 75%;
+    height: 120%;
+    color: black;
+    margin: auto;
+    top: -10%;
+    left: 20%;
+    z-index: 10;
+    position: absolute;
+    padding: 20px;
+  }
 
+  .login-button {
+    width: 100%;
+  }
+
+  .forget {
+    width: 100%;
+  }
+
+  h1 {
+    margin-top: 15%;
+  }
+
+  input {
+    width: 100%;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 992px) {
 
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 993px) and (max-width: 1199px) {
 
 }
 
