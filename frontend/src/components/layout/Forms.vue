@@ -1,10 +1,10 @@
 <template>
   <div class="forms">
-      <Login />
-      <LoginOff />
-      <Register />
-      <RegisterOff />
-      <MovingBlock />
+    <Login />
+    <LoginOff />
+    <Register />
+    <RegisterOff />
+    <MovingBlock />
   </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
     LoginOff,
     Register,
     RegisterOff,
-    MovingBlock
+    MovingBlock,
   },
   data() {
     return {};

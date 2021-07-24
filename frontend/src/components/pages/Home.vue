@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Forms from "../layout/Forms.vue"
+import Forms from "../layout/Forms.vue";
 
 export default {
   name: "Home",
@@ -19,7 +19,7 @@ export default {
 <style scoped>
 .home {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 #title {
@@ -27,7 +27,7 @@ export default {
   font-size: 200px;
   left: 14%;
   top: 5%;
-  color: rgb(241, 163, 85)
+  color: rgb(241, 163, 85);
 }
 
 .era {

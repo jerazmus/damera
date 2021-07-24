@@ -143,7 +143,6 @@ export default {
 .register {
   width: 45%;
   height: 120%;
-  /*background-color: rgba(255, 255, 255, 1);*/
   color: black;
   margin: auto;
   top: -10%;
@@ -151,7 +150,6 @@ export default {
   z-index: 10;
   position: absolute;
   padding: 20px;
-  /*box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 15px;*/
 }
 
 h1 {
@@ -165,7 +163,6 @@ span {
 }
 
 button {
-  margin: 1px;
   margin-left: 70%;
 }
 
@@ -201,13 +198,6 @@ input:focus {
   border-color: transparent !important;
 }
 
-.btn-danger,
-.btn-danger:hover {
-  background-color: rgba(0, 0, 0, 0) !important;
-  border-color: rgba(0, 0, 0, 0) !important;
-  color: white;
-}
-
 .form-control.is-valid,
 .form-control.is-valid:focus {
   background-image: none;
@@ -231,9 +221,11 @@ input:focus {
 .slide-fade-enter-active {
   transition: all 1s ease;
 }
+
 .slide-fade-leave-active {
   transition: all 0s;
 }
+
 .slide-fade-enter,
 .slide-fade-leave-to {
   transform: translateX(0px);

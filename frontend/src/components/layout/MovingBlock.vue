@@ -1,8 +1,9 @@
 <template>
   <transition name="slide-fade">
-    <div class="left" v-bind:class="{ right: this.$store.state.loginView }">
-    
-    </div>
+    <div
+      class="left"
+      v-bind:class="{ right: this.$store.state.loginView }"
+    ></div>
   </transition>
 </template>
 
@@ -16,15 +17,14 @@ Vue.use(VueAxios, axios);
 export default {
   name: "Moving",
   data() {
-    return {
-
-    };
+    return {};
   },
 };
 </script>
 
 <style scoped>
-.left, .right {
+.left,
+.right {
   width: 45%;
   height: 120%;
   background-color: rgba(255, 255, 255, 1);
@@ -49,9 +49,11 @@ export default {
 .slide-fade-enter-active {
   transition: all 0.2s ease;
 }
+
 .slide-fade-leave-active {
-  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 0.2s;
 }
+
 .slide-fade-enter,
 .slide-fade-leave-to {
   transform: translateX(0px);

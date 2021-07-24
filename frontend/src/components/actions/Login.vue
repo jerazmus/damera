@@ -133,19 +133,14 @@ input:focus {
   border-color: transparent !important;
 }
 
-.btn-outline-primary,
-.btn-outline-primary:hover {
-  background-color: rgba(0, 0, 0, 0) !important;
-  border-color: rgba(0, 0, 0, 0) !important;
-  color: white !important;
-}
-
 .slide-fade-enter-active {
   transition: all 1s ease;
 }
+
 .slide-fade-leave-active {
   transition: all 0s;
 }
+
 .slide-fade-enter,
 .slide-fade-leave-to {
   transform: translateX(0px);

@@ -60,9 +60,11 @@ button {
 .slide-fade-enter-active {
   transition: all 1.5s ease;
 }
+
 .slide-fade-leave-active {
   transition: all 0s;
 }
+
 .slide-fade-enter,
 .slide-fade-leave-to {
   transform: translateX(0px);

@@ -1,6 +1,6 @@
 <template>
   <transition name="slide-fade">
-    <div class="login" v-if="!this.$store.state.loginView">
+    <div class="login-off" v-if="!this.$store.state.loginView">
       <h2>Already have an account?</h2>
       <p>Log in and start using the site!</p>
       <button @click="loginOn">LOGIN</button>
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style scoped>
-.login {
+.login-off {
   width: 45%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0);
@@ -55,9 +55,11 @@ button {
 .slide-fade-enter-active {
   transition: all 1.5s ease;
 }
+
 .slide-fade-leave-active {
   transition: all 0s;
 }
+
 .slide-fade-enter,
 .slide-fade-leave-to {
   transform: translateX(0px);
