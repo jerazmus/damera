@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-
+using UsersApi.DameraSOA.TokenNS.Model;
 
 namespace UsersApi.DameraSOA.UserNS.Model
 {
@@ -86,7 +86,6 @@ namespace UsersApi.DameraSOA.UserNS.Model
         {
             User user = await FindOne(email);
             bool verified = BCrypt.Net.BCrypt.Verify(password, user.Password);
-            //return _context.User.Where(user => user.Email == email).Any(user => user.Password == password);
             return verified;
             
         }

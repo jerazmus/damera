@@ -96,7 +96,12 @@ namespace UsersApi.DameraSOA.TokenNS.Model
             }
         }
 
-
+        public async Task<(string,string)> GetCookies()
+        {
+            string cookieLogin = _httpContextAccessor.HttpContext.Request.Cookies["DameraLogin"];
+            string cookieToken = _httpContextAccessor.HttpContext.Request.Cookies["DameraToken"];
+            return  (cookieLogin, cookieToken) ;
+        }
 
     }
 }

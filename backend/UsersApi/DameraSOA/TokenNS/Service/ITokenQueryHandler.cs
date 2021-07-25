@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UsersApi.DameraSOA.TokenNS.Model;
+using UsersApi.DameraSOA.UserNS.Model;
 
 namespace UsersApi.DameraSOA.TokenNS.Service
 {
@@ -10,6 +11,6 @@ namespace UsersApi.DameraSOA.TokenNS.Service
     {
         Task<IEnumerable<Token>> Get();
         Task<Token> Get(int id);
-        Task<bool> Verify();
+        Task<User> Verify();
     }
 }

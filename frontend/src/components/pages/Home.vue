@@ -1,9 +1,7 @@
 <template>
   <div class="home">
-    <div id="cover">
-      <p id="title">dam<span class="era">era</span>.</p>
-      <Forms />
-    </div>
+    <p id="title">dam<span class="era">era</span>.</p>
+    <Forms />
   </div>
 </template>
 
@@ -22,14 +20,6 @@ export default {
 .home {
   margin: 0;
   font-family: "Poppins", sans-serif;
-  padding: 0;
-  min-height: 100vh;
-  height: auto;
-  background: url("../../assets/phone.jpg");
-  background-position: -5% 0%;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: 40vw 110vh;
 }
 
 #title {
@@ -38,22 +28,11 @@ export default {
   left: 14%;
   top: 5%;
   color: rgb(241, 163, 85);
-  user-select: none;
+  user-select: none; 
 }
 
 .era {
   color: black;
-}
-
-#cover {
-  background-color: rgba(255, 255, 255, 1);
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  width: 70vw;
-  position: absolute;
-  right: 0;
-  box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 15px;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -72,14 +51,6 @@ export default {
     width: 100vw;
     margin: 0;
     padding: 0;
-    background: none;
-  }
-
-  #cover {
-    height: 100vh;
-    width: 100vw;
-    box-shadow: none;
-    right: auto;
   }
 }
 
@@ -99,14 +70,6 @@ export default {
     width: 100vw;
     margin: 0;
     padding: 0;
-    background: none;
-  }
-
-  #cover {
-    height: 100vh;
-    width: 100vw;
-    box-shadow: none;
-    right: auto;
   }
 }
 
@@ -126,14 +89,6 @@ export default {
     width: 100vw;
     margin: 0;
     padding: 0;
-    background: none;
-  }
-
-  #cover {
-    height: 100vh;
-    width: 100vw;
-    box-shadow: none;
-    right: auto;
   }
 }
 
@@ -153,14 +108,6 @@ export default {
     width: 100vw;
     margin: 0;
     padding: 0;
-    background: none;
-  }
-
-  #cover {
-    height: 100vh;
-    width: 100vw;
-    box-shadow: none;
-    right: auto;
   }
 }
 
