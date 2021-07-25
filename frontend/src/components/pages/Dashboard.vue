@@ -1,16 +1,14 @@
 <template>
   <div class="dashboard">
-      <p>{{ this.$store.state.userEmail }}</p>
-      <p>{{ this.$store.state.userID }}</p>
+    <p>{{ this.$store.state.userEmail }}</p>
+    <p>{{ this.$store.state.userID }}</p>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "Dashboard",
-  components: {
-  },
+  components: {},
 };
 </script>
 
@@ -19,7 +17,6 @@ export default {
   margin: 0;
   font-family: "Poppins", sans-serif;
 }
-
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -33,7 +30,6 @@ export default {
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) and (max-width: 767px) {
-
   .dashboard {
     height: 100vh;
     width: 100vw;

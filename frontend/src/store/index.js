@@ -9,6 +9,7 @@ export default new Vuex.Store({
     loginView: false,
     logged: false,
     userEmail: null,
+    userID: null
   },
   getters: {},
   mutations: {},
