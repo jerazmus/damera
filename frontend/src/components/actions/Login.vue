@@ -2,7 +2,7 @@
   <transition name="slide-fade">
     <div class="login" v-if="this.$store.state.loginView">
       <h1>log in<span>.</span></h1>
-      <b-form @submit="login" @reset="register">
+      <b-form @submit.prevent="login">
         <b-form-group>
           <b-form-input
             id="input-1"
@@ -37,17 +37,40 @@
 </template>
 
 <script>
+import Vue from "vue";
+import axios from "axios";
+import VueAxios from "vue-axios";
+
+Vue.use(VueAxios, axios);
+
 export default {
   name: "Login",
   data() {
     return {
       email: "",
       password: "",
+      apiUrl: "https://localhost:44333/api/Token/",
     };
   },
   methods: {
     login() {
-      // tutaj strzał do backendu z loginem
+      let userJSON = { email: this.email, password: this.password };
+      axios
+            .post(this.apiUrl + `Login`, userJSON)
+            .then((response) => {
+              return response.data;
+            })
+            .then((data) => {
+              this.$store.state.logged = true
+              this.$store.state.userEmail = this.email
+              this.$store.state.userID = data.userID
+              this.$router.push('/dashboard')
+            })
+            .catch((error) => {
+              if (error.response.status == 500) {
+                alert("Błędne logowanie!");
+              }
+            });
     },
     register() {
       this.$store.state.registerView = true;
@@ -101,9 +124,6 @@ button {
   box-shadow: none;
 }
 
-.login-button {
-  width: 30%;
-}
 
 input {
   background-color: rgba(0, 0, 0, 0);
@@ -124,9 +144,10 @@ input:focus {
 }
 
 .btn-primary {
-  background-color: rgb(241, 163, 85);
+  background-color: rgb(241, 163, 85) !important;
   border-color: transparent !important;
   user-select: none; 
+  width: 30%;
 }
 
 .btn-primary:hover {

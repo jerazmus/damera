@@ -39,7 +39,7 @@ namespace UsersApi.DameraAPI.TokenNS.Controller
             return await _tokenCommandHandler.Login(user);
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<bool> Verify()
         {
             return await _tokenQueryHandler.Verify();
