@@ -36,7 +36,6 @@ namespace UsersApi
         {
             services.AddCors();
             services.AddHttpContextAccessor();
-            //services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IUserQueryHandler, UserQueryHandler>();
             services.AddScoped<IUserCommandHandler, UserCommandHandler>();
@@ -51,7 +50,7 @@ namespace UsersApi
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication1", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Damera API", Version = "v1" });
             });
         }
 
@@ -67,7 +66,7 @@ namespace UsersApi
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplication1 v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Damera API v1"));
             }
 
             app.UseHttpsRedirection();

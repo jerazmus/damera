@@ -33,20 +33,6 @@ namespace UsersApi.DameraSOA.UserNS.Model
             return await _context.User.FirstOrDefaultAsync(user => user.Email == email);//_context.User.FindAsync(email);
         }
 
-        public async Task GenerateCookies(string email, string userToken)
-        {
-            CookieOptions cookieOptions = new CookieOptions();
-            cookieOptions.Expires = DateTime.Now.AddHours(6);
-            _httpContextAccessor.HttpContext.Response.Cookies.Append("DameraToken", userToken, cookieOptions);
-            _httpContextAccessor.HttpContext.Response.Cookies.Append("DameraLogin", email, cookieOptions);
-        }
-
-        public async Task DeleteCookies()
-        {
-            _httpContextAccessor.HttpContext.Response.Cookies.Delete("DameraLogin");
-            _httpContextAccessor.HttpContext.Response.Cookies.Delete("DameraToken");
-        }
-
         public async Task<User> Save(User user)
         {
             string passwordHash = BCrypt.Net.BCrypt.HashPassword(user.Password);
@@ -87,7 +73,6 @@ namespace UsersApi.DameraSOA.UserNS.Model
             User user = await FindOne(email);
             bool verified = BCrypt.Net.BCrypt.Verify(password, user.Password);
             return verified;
-            
         }
 
     }

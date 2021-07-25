@@ -45,12 +45,10 @@ namespace UsersApi.DameraSOA.TokenNS.Model
             return await _context.Token.ToListAsync();
         }
 
-        public async Task<Token> Generate(int id)
+        public Token Generate(int id)
         {
             string hash = GenerateHash();
-
             Token token = new Token();
-
             token.UserID = id;
             token.UserToken = hash;
             token.CreateDate = DateTime.Now;
@@ -61,7 +59,6 @@ namespace UsersApi.DameraSOA.TokenNS.Model
         private string GenerateHash()
         {
             Random rand = new Random();
-
             string textToken = rand.Next(1, 10) + "a" + DateTime.Now.AddDays(rand.Next(1, 10)) + rand.Next(1, 10) + DateTime.Now + rand.Next(1, 10);
             var data = Encoding.ASCII.GetBytes(textToken);
             var sha1 = new SHA1CryptoServiceProvider();
@@ -82,26 +79,39 @@ namespace UsersApi.DameraSOA.TokenNS.Model
             await _context.SaveChangesAsync();
         }
 
-        public async Task<bool> CheckCookies()
+        public bool CheckCookies()
         {
             string cookieLogin = _httpContextAccessor.HttpContext.Request.Cookies["DameraLogin"];
             string cookieToken = _httpContextAccessor.HttpContext.Request.Cookies["DameraToken"];
             if (cookieLogin != null && cookieToken != null)
             {
                 return true;
-            } 
+            }
             else
             {
                 return false;
             }
         }
 
-        public async Task<(string,string)> GetCookies()
+        public (string, string) GetCookies()
         {
             string cookieLogin = _httpContextAccessor.HttpContext.Request.Cookies["DameraLogin"];
             string cookieToken = _httpContextAccessor.HttpContext.Request.Cookies["DameraToken"];
-            return  (cookieLogin, cookieToken) ;
+            return (cookieLogin, cookieToken);
         }
 
+        public void DeleteCookies()
+        {
+            _httpContextAccessor.HttpContext.Response.Cookies.Delete("DameraLogin");
+            _httpContextAccessor.HttpContext.Response.Cookies.Delete("DameraToken");
+        }
+
+        public void GenerateCookies(string email, string token)
+        {
+            CookieOptions cookieOptions = new CookieOptions();
+            cookieOptions.Expires = DateTime.Now.AddHours(6);
+            _httpContextAccessor.HttpContext.Response.Cookies.Append("DameraToken", token, cookieOptions);
+            _httpContextAccessor.HttpContext.Response.Cookies.Append("DameraLogin", email, cookieOptions);
+        }
     }
 }

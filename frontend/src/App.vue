@@ -15,26 +15,23 @@ export default {
   name: "App",
   data() {
     return {
-      apiUrl: "https://localhost:44333/api/Token/",
+      apiUrl: "https://localhost:44333/api/Token/Verify",
     };
   },
   components: {},
   mounted() {
     axios
-      .get(this.apiUrl + `Verify`)
+      .get(this.apiUrl)
       .then((response) => {
         return response.data;
       })
       .then((data) => {
         console.log(data);
-        
-          this.$store.state.logged = true;
-          this.$store.state.userEmail = data.email;
-          this.$store.state.userID = data.id;
-          this.$router.push("/dashboard");
-          alert("zalogowany (mounted)");
-       
-        //this.$router.push('/dashboard')
+        this.$store.state.logged = true;
+        this.$store.state.userEmail = data.email;
+        this.$store.state.userID = data.id;
+        this.$router.push("/dashboard");
+        alert("zalogowany (mounted)");
       })
       .catch((error) => {
         if (error.response.status == 500) {

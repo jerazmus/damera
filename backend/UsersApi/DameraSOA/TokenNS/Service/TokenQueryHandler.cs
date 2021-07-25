@@ -31,10 +31,10 @@ namespace UsersApi.DameraSOA.TokenNS.Service
 
         public async Task<User> Verify()
         {
-            if(await _tokenRepository.CheckCookies())
+            if(_tokenRepository.CheckCookies())
             {
                 string cookieLogin, cookieToken;
-                (cookieLogin, cookieToken) = await _tokenRepository.GetCookies();
+                (cookieLogin, cookieToken) = _tokenRepository.GetCookies();
                 User user = await _userRepository.FindOne(cookieLogin);
                 Token token = await _tokenRepository.FindOne(user.ID);
                 if (token.UserToken == cookieToken)

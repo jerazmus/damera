@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <div id="cover">
-    <p id="title">dam<span class="era">era</span>.</p>
-    <Forms />
+      <p id="title">dam<span class="era">era</span>.</p>
+      <Forms />
     </div>
   </div>
 </template>
@@ -38,7 +38,7 @@ export default {
   left: 14%;
   top: 5%;
   color: rgb(241, 163, 85);
-  user-select: none; 
+  user-select: none;
 }
 
 .era {
