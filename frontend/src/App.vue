@@ -5,9 +5,43 @@
 </template>
 
 <script>
+import Vue from "vue";
+import axios from "axios";
+import VueAxios from "vue-axios";
+
+Vue.use(VueAxios, axios);
+
 export default {
   name: "App",
+  data() {
+    return {
+      apiUrl: "https://localhost:44333/api/Token/",
+    };
+  },
   components: {},
+  mounted() {
+    axios
+      .get(this.apiUrl + `Verify`)
+      .then((response) => {
+        return response.data;
+      })
+      .then((data) => {
+        console.log(data);
+        
+          this.$store.state.logged = true;
+          this.$store.state.userEmail = data.email;
+          this.$store.state.userID = data.id;
+          this.$router.push("/dashboard");
+          alert("zalogowany (mounted)");
+       
+        //this.$router.push('/dashboard')
+      })
+      .catch((error) => {
+        if (error.response.status == 500) {
+          alert("Błąd!");
+        }
+      });
+  },
 };
 </script>
 

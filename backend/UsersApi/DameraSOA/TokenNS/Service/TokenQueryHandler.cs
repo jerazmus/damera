@@ -4,16 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UsersApi.DameraSOA.TokenNS.Model;
+using UsersApi.DameraSOA.UserNS.Model;
 
 namespace UsersApi.DameraSOA.TokenNS.Service
 {
     public class TokenQueryHandler : ITokenQueryHandler
     {
         private readonly ITokenRepository _tokenRepository;
+        private readonly IUserRepository _userRepository;
 
-        public TokenQueryHandler(ITokenRepository tokenRepository)
+        public TokenQueryHandler(ITokenRepository tokenRepository, IUserRepository userRepository)
         {
             _tokenRepository = tokenRepository;
+            _userRepository = userRepository;
         }
 
         public async Task<IEnumerable<Token>> Get()
@@ -26,15 +29,26 @@ namespace UsersApi.DameraSOA.TokenNS.Service
             throw new NotImplementedException();
         }
 
-        public async Task<bool> Verify()
+        public async Task<User> Verify()
         {
             if(await _tokenRepository.CheckCookies())
             {
-                throw new NotImplementedException("true");
+                string cookieLogin, cookieToken;
+                (cookieLogin, cookieToken) = await _tokenRepository.GetCookies();
+                User user = await _userRepository.FindOne(cookieLogin);
+                Token token = await _tokenRepository.FindOne(user.ID);
+                if (token.UserToken == cookieToken)
+                {
+                    return user;
+                }
+                else
+                {
+                    throw new NotImplementedException("Brak pasujacych tokenow");
+                }
             }
             else
             {
-                throw new NotImplementedException("false");
+                throw new NotImplementedException("Brak istniejacego tokenu");
             }     
         }
     }
