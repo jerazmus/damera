@@ -27,13 +27,10 @@ namespace UsersApi.DameraSOA.TokenNS.Service
         public async Task<Token> Login(User user)
         {
             //todo walidacja
-            if (_userRepository.PasswordSignInAsync(user.Email,user.Password).Result)
+            if (_userRepository.PasswordSignInAsync(user.Email, user.Password).Result)
             {
-
                 User User = _userRepository.FindOne(user.Email).Result;
-                //var hashedPassword = ASCIIEncoding.GetString(sha1data);
                 Token token = await _tokenRepository.Generate(User.ID);
-                //await _tokenRepository.Delete(User.UserID);
                 var newToken = await _tokenRepository.Save(token);
                 await _userRepository.GenerateCookies(User.Email, token.UserToken);
 

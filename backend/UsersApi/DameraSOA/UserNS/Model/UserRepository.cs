@@ -84,7 +84,11 @@ namespace UsersApi.DameraSOA.UserNS.Model
 
         public async Task<bool> PasswordSignInAsync(string email, string password)
         {
-            return _context.User.Where(user => user.Email == email).Any(user => user.Password == password);
+            User user = await FindOne(email);
+            bool verified = BCrypt.Net.BCrypt.Verify(password, user.Password);
+            //return _context.User.Where(user => user.Email == email).Any(user => user.Password == password);
+            return verified;
+            
         }
 
     }
