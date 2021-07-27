@@ -30,7 +30,7 @@ namespace UsersApi.DameraSOA.UserNS.Model
 
         public async Task<User> FindOne(string email)
         {
-            return await _context.User.FirstOrDefaultAsync(user => user.Email == email);//_context.User.FindAsync(email);
+            return await _context.User.FirstOrDefaultAsync(user => user.Email == email);
         }
 
         public async Task<User> Save(User user)
@@ -58,14 +58,8 @@ namespace UsersApi.DameraSOA.UserNS.Model
         public async Task<bool> UserExists(string email)
         {
             List<string> emailList = await _context.User.Select(user => user.Email).ToListAsync();
-            if (emailList.Any(e => e == email))
-            {
-                return true;
-            }
-            else 
-            {
-                return false;
-            }
+            if (emailList.Any(e => e == email)) return true;
+            else return false;
         }
 
         public async Task<bool> PasswordSignInAsync(string email, string password)

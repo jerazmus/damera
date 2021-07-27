@@ -30,15 +30,10 @@ export default {
         return response.data;
       })
       .then((data) => {
-          console.log(data);
-        
           this.$store.state.logged = true;
           this.$store.state.userEmail = data.email;
           this.$store.state.userID = data.id;
           this.$router.push("/dashboard");
-          alert("zalogowany (mounted)");
-       
-        //this.$router.push('/dashboard')
       })
       .catch((error) => {
         if (error.response.status == 500) {

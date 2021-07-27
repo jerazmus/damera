@@ -13,12 +13,10 @@ namespace UsersApi.DameraSOA.TokenNS.Model
     public class TokenRepository : ITokenRepository
     {
         private readonly TokenContext _context;
-        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public TokenRepository(TokenContext context, IHttpContextAccessor httpContextAccessor)
+        public TokenRepository(TokenContext context)
         {
             _context = context;
-            this._httpContextAccessor = httpContextAccessor;
         }
         
         public async Task<Token> Save(Token token)
@@ -45,7 +43,7 @@ namespace UsersApi.DameraSOA.TokenNS.Model
             return await _context.Token.ToListAsync();
         }
 
-        public Token Generate(int id)
+        public async Task<Token> Generate(int id)
         {
             string hash = GenerateHash();
             Token token = new Token();
@@ -84,39 +82,5 @@ namespace UsersApi.DameraSOA.TokenNS.Model
             await _context.SaveChangesAsync();
         }
 
-        public bool CheckCookies()
-        {
-            string cookieLogin = _httpContextAccessor.HttpContext.Request.Cookies["DameraLogin"];
-            string cookieToken = _httpContextAccessor.HttpContext.Request.Cookies["DameraToken"];
-            if (cookieLogin != null && cookieToken != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public (string, string) GetCookies()
-        {
-            string cookieLogin = _httpContextAccessor.HttpContext.Request.Cookies["DameraLogin"];
-            string cookieToken = _httpContextAccessor.HttpContext.Request.Cookies["DameraToken"];
-            return (cookieLogin, cookieToken);
-        }
-
-        public void DeleteCookies()
-        {
-            _httpContextAccessor.HttpContext.Response.Cookies.Delete("DameraLogin");
-            _httpContextAccessor.HttpContext.Response.Cookies.Delete("DameraToken");
-        }
-
-        public void GenerateCookies(string email, string token)
-        {
-            CookieOptions cookieOptions = new CookieOptions();
-            cookieOptions.Expires = DateTime.Now.AddHours(6);
-            _httpContextAccessor.HttpContext.Response.Cookies.Append("DameraToken", token, cookieOptions);
-            _httpContextAccessor.HttpContext.Response.Cookies.Append("DameraLogin", email, cookieOptions);
-        }
     }
 }

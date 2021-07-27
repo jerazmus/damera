@@ -13,7 +13,5 @@ namespace UsersApi.DameraSOA.TokenNS.Model
         Task<Token> Generate(int id);
         Task<Token> Save(Token token);
         Task Delete(int userID);
-        Task<bool> CheckCookies();
-        Task<(string, string)> GetCookies();
     }
 }

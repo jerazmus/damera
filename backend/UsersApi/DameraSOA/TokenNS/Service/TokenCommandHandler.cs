@@ -26,14 +26,11 @@ namespace UsersApi.DameraSOA.TokenNS.Service
 
         public async Task<Token> Login(User user)
         {
-            //todo walidacja
             if (_userRepository.PasswordSignInAsync(user.Email, user.Password).Result)
             {
                 User User = _userRepository.FindOne(user.Email).Result;
                 Token token = await _tokenRepository.Generate(User.ID);
                 var newToken = await _tokenRepository.Save(token);
-               // await _userRepository.GenerateCookies(User.Email, token.UserToken);
-               // na front przerzucamys
 
                 return newToken;
             }
@@ -47,7 +44,6 @@ namespace UsersApi.DameraSOA.TokenNS.Service
         {
             var User = await _userRepository.FindOne(userID);
             await _tokenRepository.Delete(User.ID);
-            await _userRepository.DeleteCookies();
         }
         
     }
