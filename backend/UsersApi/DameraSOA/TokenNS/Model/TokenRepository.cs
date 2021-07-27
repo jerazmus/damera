@@ -72,6 +72,11 @@ namespace UsersApi.DameraSOA.TokenNS.Model
             return await _context.Token.Where(b => b.UserID == userID).FirstOrDefaultAsync();
         }
 
+        public async Task<Token> FindOne(string userToken)
+        {
+            return await _context.Token.Where(b => b.UserToken == userToken).FirstOrDefaultAsync();
+        }
+
         public async Task Delete(int userID)
         {
             var tokenToDelete = _context.Token.Where(b => b.UserID == userID).FirstOrDefault();

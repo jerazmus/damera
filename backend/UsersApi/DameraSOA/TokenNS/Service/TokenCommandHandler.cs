@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Security.Authentication;
 using System.Threading.Tasks;
@@ -12,13 +11,12 @@ namespace UsersApi.DameraSOA.TokenNS.Service
     {
         private readonly ITokenRepository _tokenRepository;
         private readonly IUserRepository _userRepository;
-        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public TokenCommandHandler(ITokenRepository tokenRepository, IUserRepository userRepository, IHttpContextAccessor httpContextAccessor)
+        public TokenCommandHandler(ITokenRepository tokenRepository, IUserRepository userRepository)
         {
             _tokenRepository = tokenRepository;
             _userRepository = userRepository;
-            this._httpContextAccessor = httpContextAccessor;
+           
         }
 
         public Task<Token> Create(Token token)
@@ -28,12 +26,14 @@ namespace UsersApi.DameraSOA.TokenNS.Service
 
         public async Task<Token> Login(User user)
         {
+            //todo walidacja
             if (_userRepository.PasswordSignInAsync(user.Email, user.Password).Result)
             {
                 User User = _userRepository.FindOne(user.Email).Result;
-                Token token = _tokenRepository.Generate(User.ID);
+                Token token = await _tokenRepository.Generate(User.ID);
                 var newToken = await _tokenRepository.Save(token);
-                _tokenRepository.GenerateCookies(user.Email, token.UserToken);
+               // await _userRepository.GenerateCookies(User.Email, token.UserToken);
+               // na front przerzucamys
 
                 return newToken;
             }
@@ -47,7 +47,7 @@ namespace UsersApi.DameraSOA.TokenNS.Service
         {
             var User = await _userRepository.FindOne(userID);
             await _tokenRepository.Delete(User.ID);
-            _tokenRepository.DeleteCookies();
+            await _userRepository.DeleteCookies();
         }
         
     }

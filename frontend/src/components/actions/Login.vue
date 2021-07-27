@@ -40,6 +40,8 @@
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import cookie from "vue-cookies";
+
 
 Vue.use(VueAxios, axios);
 
@@ -61,6 +63,16 @@ export default {
           return response.data;
         })
         .then((data) => {
+          /*
+          let date = new Date();
+          date.setTime(date.getTime() + 6 * 60 * 60 * 1000);
+          let expiresTime = "expires=" + date;
+          document.cookie = "DameraToken=" + data.userToken + ";" + expiresTime + ";path=/";
+          document.cookie = "DameraLogin=" + this.email + ";" + expiresTime + ";path=/";
+          */
+          var damera = { login: this.email, token: data.userToken};
+          cookie.set('damera', damera);
+          
           this.$store.state.logged = true;
           this.$store.state.userEmail = this.email;
           this.$store.state.userID = data.userID;

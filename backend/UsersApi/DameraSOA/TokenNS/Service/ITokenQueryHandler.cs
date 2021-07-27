@@ -11,6 +11,6 @@ namespace UsersApi.DameraSOA.TokenNS.Service
     {
         Task<IEnumerable<Token>> Get();
         Task<Token> Get(int id);
-        Task<User> Verify();
+        Task<User> Verify(String userToken);
     }
 }
