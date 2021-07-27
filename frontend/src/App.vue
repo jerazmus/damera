@@ -8,6 +8,7 @@
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import cookie from "vue-cookies";
 
 Vue.use(VueAxios, axios);
 
@@ -20,13 +21,16 @@ export default {
   },
   components: {},
   mounted() {
+    let token = cookie.get('damera');
+    let userToken = token.token;
+
     axios
-      .get(this.apiUrl + `Verify`)
+      .get(this.apiUrl + `Verify`, {params:{userToken},})
       .then((response) => {
         return response.data;
       })
       .then((data) => {
-        console.log(data);
+          console.log(data);
         
           this.$store.state.logged = true;
           this.$store.state.userEmail = data.email;

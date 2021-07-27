@@ -32,7 +32,8 @@ namespace UsersApi.DameraSOA.TokenNS.Service
                 User User = _userRepository.FindOne(user.Email).Result;
                 Token token = await _tokenRepository.Generate(User.ID);
                 var newToken = await _tokenRepository.Save(token);
-                await _userRepository.GenerateCookies(User.Email, token.UserToken);
+               // await _userRepository.GenerateCookies(User.Email, token.UserToken);
+               // na front przerzucamys
 
                 return newToken;
             }

@@ -40,9 +40,9 @@ namespace UsersApi.DameraAPI.TokenNS.Controller
         }
 
         [HttpGet]
-        public async Task<User> Verify()
+        public async Task<User> Verify(String userToken)
         {
-            return await _tokenQueryHandler.Verify();
+            return await _tokenQueryHandler.Verify(userToken);
         }
         
         [HttpDelete("{id}")]

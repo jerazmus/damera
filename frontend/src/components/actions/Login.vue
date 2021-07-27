@@ -40,6 +40,8 @@
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import cookie from "vue-cookies";
+
 
 Vue.use(VueAxios, axios);
 
@@ -56,21 +58,31 @@ export default {
     login() {
       let userJSON = { email: this.email, password: this.password };
       axios
-            .post(this.apiUrl + `Login`, userJSON)
-            .then((response) => {
-              return response.data;
-            })
-            .then((data) => {
-              this.$store.state.logged = true
-              this.$store.state.userEmail = this.email
-              this.$store.state.userID = data.userID
-              this.$router.push('/dashboard')
-            })
-            .catch((error) => {
-              if (error.response.status == 500) {
-                alert("Błędne logowanie!");
-              }
-            });
+        .post(this.apiUrl + `Login`, userJSON)
+        .then((response) => {
+          return response.data;
+        })
+        .then((data) => {
+          /*
+          let date = new Date();
+          date.setTime(date.getTime() + 6 * 60 * 60 * 1000);
+          let expiresTime = "expires=" + date;
+          document.cookie = "DameraToken=" + data.userToken + ";" + expiresTime + ";path=/";
+          document.cookie = "DameraLogin=" + this.email + ";" + expiresTime + ";path=/";
+          */
+          var damera = { login: this.email, token: data.userToken};
+          cookie.set('damera', damera);
+          
+          this.$store.state.logged = true;
+          this.$store.state.userEmail = this.email;
+          this.$store.state.userID = data.userID;
+          this.$router.push("/dashboard");
+        })
+        .catch((error) => {
+          if (error.response.status == 500) {
+            alert("Błędne logowanie!");
+          }
+        });
     },
     register() {
       this.$store.state.registerView = true;
@@ -101,7 +113,7 @@ h1 {
   margin-top: 0%;
   margin-bottom: 5%;
   color: rgb(241, 163, 85);
-  user-select: none; 
+  user-select: none;
 }
 
 span {
@@ -111,7 +123,7 @@ span {
 button {
   margin: 1px;
   margin-top: 5%;
-  user-select: none; 
+  user-select: none;
 }
 
 .forget,
@@ -123,7 +135,6 @@ button {
   outline-style: none;
   box-shadow: none;
 }
-
 
 input {
   background-color: rgba(0, 0, 0, 0);
@@ -146,7 +157,7 @@ input:focus {
 .btn-primary {
   background-color: rgb(241, 163, 85) !important;
   border-color: transparent !important;
-  user-select: none; 
+  user-select: none;
   width: 30%;
 }
 
@@ -233,16 +244,13 @@ input:focus {
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) and (max-width: 992px) {
-
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 993px) and (max-width: 1199px) {
-
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-
 }
 </style>

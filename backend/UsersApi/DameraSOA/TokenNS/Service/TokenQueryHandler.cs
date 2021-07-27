@@ -29,8 +29,23 @@ namespace UsersApi.DameraSOA.TokenNS.Service
             throw new NotImplementedException();
         }
 
-        public async Task<User> Verify()
+        public async Task<User> Verify(String userToken)
         {
+            Token token = await _tokenRepository.FindOne(userToken);
+            if(token != null)
+            {
+                User user = await _userRepository.FindOne(token.UserID);
+                return user;
+            }
+            else
+            {
+                throw new NotImplementedException("Brak pasujacych tokenow");
+            }
+
+
+
+
+            /*
             if(await _tokenRepository.CheckCookies())
             {
                 string cookieLogin, cookieToken;
@@ -49,7 +64,7 @@ namespace UsersApi.DameraSOA.TokenNS.Service
             else
             {
                 throw new NotImplementedException("Brak istniejacego tokenu");
-            }     
+            }     */
         }
     }
 }
