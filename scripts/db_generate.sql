@@ -20,5 +20,3 @@ CREATE TABLE [dbo].[Token](
 	[ExpirationDate] [datetime] NULL DEFAULT (dateadd(hour,(6),getdate()))
 )
 GO
-INSERT INTO [dbo].[User] VALUES ('jerazmus@o2.pl', 'passwd')
-INSERT INTO [dbo].[User] VALUES ('damian@o2.pl', 'passwd')
