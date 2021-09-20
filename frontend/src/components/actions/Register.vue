@@ -156,7 +156,7 @@ h1 {
   margin-top: 0%;
   margin-bottom: 5%;
   color: rgb(241, 163, 85);
-  user-select: none; 
+  user-select: none;
 }
 
 span {
@@ -185,7 +185,7 @@ input:focus {
   background-color: rgb(241, 163, 85) !important;
   border-color: transparent !important;
   margin-left: 70%;
-  user-select: none; 
+  user-select: none;
 }
 
 .btn-primary:hover {
@@ -273,16 +273,13 @@ input:focus {
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) and (max-width: 992px) {
-
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 993px) and (max-width: 1199px) {
-
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-
 }
 </style>

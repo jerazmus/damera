@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "Login",
+  name: "LoginOff",
   data() {
     return {};
   },
@@ -51,12 +51,12 @@ h2,
 p,
 button {
   color: white;
-  user-select: none; 
+  user-select: none;
 }
 
 span {
   display: none;
-  user-select: none; 
+  user-select: none;
 }
 
 .slide-fade-enter-active {
@@ -133,16 +133,13 @@ span {
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) and (max-width: 992px) {
-
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 993px) and (max-width: 1199px) {
-
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-
 }
 </style>

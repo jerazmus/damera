@@ -42,7 +42,6 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 import cookie from "vue-cookies";
 
-
 Vue.use(VueAxios, axios);
 
 export default {
@@ -63,9 +62,9 @@ export default {
           return response.data;
         })
         .then((data) => {
-          var damera = { login: this.email, token: data.userToken};
-          cookie.set('damera', damera);
-          
+          var damera = { login: this.email, token: data.userToken };
+          cookie.set("damera", damera);
+
           this.$store.state.logged = true;
           this.$store.state.userEmail = this.email;
           this.$store.state.userID = data.userID;

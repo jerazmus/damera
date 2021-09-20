@@ -21,19 +21,19 @@ export default {
   },
   components: {},
   mounted() {
-    let token = cookie.get('damera');
+    let token = cookie.get("damera");
     let userToken = token.token;
 
     axios
-      .get(this.apiUrl + `Verify`, {params:{userToken},})
+      .get(this.apiUrl + `Verify`, { params: { userToken } })
       .then((response) => {
         return response.data;
       })
       .then((data) => {
-          this.$store.state.logged = true;
-          this.$store.state.userEmail = data.email;
-          this.$store.state.userID = data.id;
-          this.$router.push("/dashboard");
+        this.$store.state.logged = true;
+        this.$store.state.userEmail = data.email;
+        this.$store.state.userID = data.id;
+        this.$router.push("/dashboard");
       })
       .catch((error) => {
         if (error.response.status == 500) {

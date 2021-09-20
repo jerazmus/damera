@@ -15,7 +15,7 @@ import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 
 export default {
-  name: "Moving",
+  name: "MovingBlock",
   data() {
     return {};
   },
@@ -94,16 +94,13 @@ export default {
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) and (max-width: 992px) {
-
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 993px) and (max-width: 1199px) {
-
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-
 }
 </style>
