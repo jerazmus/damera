@@ -37,55 +37,55 @@
 </template>
 
 <script>
-import Vue from "vue";
-import axios from "axios";
-import VueAxios from "vue-axios";
-import cookie from "vue-cookies";
+import Vue from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+import cookie from 'vue-cookies'
 
-Vue.use(VueAxios, axios);
+Vue.use(VueAxios, axios)
 
 export default {
-  name: "Login",
+  name: 'Login',
   data() {
     return {
-      email: "",
-      password: "",
-      apiUrl: "https://localhost:44333/api/Token/",
-    };
+      email: '',
+      password: '',
+      apiUrl: 'https://localhost:44333/api/Token/',
+    }
   },
   methods: {
     login() {
-      let userJSON = { email: this.email, password: this.password };
+      let userJSON = { email: this.email, password: this.password }
       axios
         .post(this.apiUrl + `Login`, userJSON)
         .then((response) => {
-          return response.data;
+          return response.data
         })
         .then((data) => {
-          var damera = { login: this.email, token: data.userToken };
-          cookie.set("damera", damera);
+          var damera = { login: this.email, token: data.userToken }
+          cookie.set('damera', damera)
 
-          this.$store.state.logged = true;
-          this.$store.state.userEmail = this.email;
-          this.$store.state.userID = data.userID;
-          this.$router.push("/dashboard");
+          this.$store.state.logged = true
+          this.$store.state.userEmail = this.email
+          this.$store.state.userID = data.userID
+          this.$router.push('/dashboard')
         })
         .catch((error) => {
           if (error.response.status == 500) {
-            alert("Błędne logowanie!");
+            alert('Błędne logowanie!')
           }
-        });
+        })
     },
     register() {
-      this.$store.state.registerView = true;
-      this.$store.state.loginView = false;
+      this.$store.state.registerView = true
+      this.$store.state.loginView = false
     },
   },
   mounted() {
-    this.email = "";
-    this.password = "";
+    this.email = ''
+    this.password = ''
   },
-};
+}
 </script>
 
 <style scoped>

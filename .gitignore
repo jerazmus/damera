@@ -18,6 +18,8 @@ backend/UsersApi/.vs/UsersApi/v16/.suo
 
 # VS Code
 .vscode/
+.eslintrc.json
+.prettierrc
 
 # Logs
 logs

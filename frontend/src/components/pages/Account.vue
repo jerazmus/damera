@@ -1,29 +1,32 @@
 <template>
-  <div class="dashboard">
+  <div class="account">
     <Navbar />
+    <AccountInfo />
   </div>
 </template>
 
 <script>
 import Navbar from '../actions/Navbar.vue'
+import AccountInfo from '../actions/AccountInfo.vue'
 
 export default {
-  name: 'Dashboard',
+  name: 'Account',
   components: {
     Navbar,
+    AccountInfo,
   },
 }
 </script>
 
 <style scoped>
-.dashboard {
+.account {
   margin: 0;
   font-family: 'Poppins', sans-serif;
 }
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  .dashboard {
+  .account {
     height: 100vh;
     width: 100vw;
     margin: 0;
@@ -33,7 +36,7 @@ export default {
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) and (max-width: 767px) {
-  .dashboard {
+  .account {
     height: 100vh;
     width: 100vw;
     margin: 0;
@@ -43,7 +46,7 @@ export default {
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) and (max-width: 992px) {
-  .dashboard {
+  .account {
     height: 100vh;
     width: 100vw;
     margin: 0;
@@ -53,7 +56,7 @@ export default {
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 993px) and (max-width: 1199px) {
-  .dashboard {
+  .account {
     height: 100vh;
     width: 100vw;
     margin: 0;
