@@ -10,5 +10,6 @@ namespace DameraAPI.DameraSOA.UserNS.Service
     {
         Task<IEnumerable<User>> Get();
         Task<User> Get(int id);
+        Task<User> Verify(User user);
     }
 }

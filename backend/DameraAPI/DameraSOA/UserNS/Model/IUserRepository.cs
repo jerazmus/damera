@@ -15,5 +15,6 @@ namespace DameraAPI.DameraSOA.UserNS.Model
         Task Update(User user);
         Task Delete(int id);
         Task<bool> PasswordSignInAsync(string email, string password);
+        Task<User> Verify(User user);
     }
 }

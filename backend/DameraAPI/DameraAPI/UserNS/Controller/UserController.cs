@@ -37,13 +37,19 @@ namespace DameraAPI.DameraAPI.UserNS.Controller
         }
 
         [HttpPost]
+        public async Task<User> VerifyUser([FromBody] User user)
+        {
+            return await _userQueryHandler.Verify(user);
+        }
+
+        [HttpPost]
         public async Task<ActionResult<User>> AddUser([FromBody] User user)
         {
             return await _userCommandHandler.Create(user);
         }
         
         [HttpPut]
-        public async Task<ActionResult<User>> UpdateUser(int id, [FromBody] User user)
+        public async Task<ActionResult<User>> UpdateUser([FromBody] User user)
         {
             await _userCommandHandler.Update(user);
             return NoContent();

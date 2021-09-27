@@ -24,5 +24,10 @@ namespace DameraAPI.DameraSOA.UserNS.Service
         {
             return await _userRepository.FindOne(id);
         }
+
+        public async Task<User> Verify(User user)
+        {
+            return await _userRepository.Verify(user);
+        }
     }
 }
