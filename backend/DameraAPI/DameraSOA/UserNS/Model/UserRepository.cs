@@ -44,6 +44,7 @@ namespace DameraAPI.DameraSOA.UserNS.Model
 
         public async Task Update(User user)
         {
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             _context.Entry(user).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
@@ -67,6 +68,23 @@ namespace DameraAPI.DameraSOA.UserNS.Model
             User user = await FindOne(email);
             bool verified = BCrypt.Net.BCrypt.Verify(password, user.Password);
             return verified;
+        }
+
+        public async Task<User> Verify(User user)
+        {
+            var userToUpdate = await FindOne(user.ID);
+            if (userToUpdate == null)
+            {
+                throw new KeyNotFoundException("User not found!");
+            }
+            if (PasswordSignInAsync(userToUpdate.Email, user.Password).Result)
+            {
+                return userToUpdate;
+            }
+            else
+            {
+                throw new KeyNotFoundException("Wrong password!");
+            }
         }
 
     }
