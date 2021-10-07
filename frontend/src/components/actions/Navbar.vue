@@ -9,6 +9,7 @@
         <li><a @click="account">Account</a></li>
         <li><a @click="logout">Logout</a></li>
 
+        <div class="merge-test-two">HELLO</div>
         <div class="merge-test-one">HELLO</div>
       </ul>
     </div>
