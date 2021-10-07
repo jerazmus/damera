@@ -8,6 +8,8 @@
         <li><a @click="dashboard">Dashboard</a></li>
         <li><a @click="account">Account</a></li>
         <li><a @click="logout">Logout</a></li>
+
+        <div class="merge-test-two">HELLO</div>
       </ul>
     </div>
   </div>
