@@ -71,89 +71,90 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
+import Vue from "vue";
+import axios from "axios";
+import VueAxios from "vue-axios";
 
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, axios);
 
 export default {
-  name: 'AccountInfo',
+  name: "AccountInfo",
   components: {},
   data() {
     return {
-      oldPassword: '',
-      newPassword: '',
-      repeatPassword: '',
-      apiUrl: 'https://localhost:44333/api/User/',
+      oldPassword: "",
+      newPassword: "",
+      repeatPassword: "",
+      apiUrl: "https://localhost:44333/api/User/",
       passwordCheck: true,
       emailShow: false,
-    }
+    };
   },
   computed: {
     matchingPasswords() {
-      return this.newPassword == this.repeatPassword ? true : false
+      return this.newPassword == this.repeatPassword ? true : false;
     },
     passwordLength() {
-      if (this.newPassword == '') return true
+      if (this.newPassword == "") return true;
       else if (this.newPassword.length < 4 && this.newPassword.length > 0)
-        return false
-      else return true
+        return false;
+      else return true;
     },
     hiddenEmail() {
-      return this.$store.state.userEmail.replace(/./g, '*')
+      return this.$store.state.userEmail.replace(/./g, "*");
     },
   },
   methods: {
     changePassword() {
-      this.passwordCheck = true
+      this.passwordCheck = true;
       if (this.matchingPasswords && this.passwordLength) {
         let oldUserJSON = {
           id: this.$store.state.userID,
           email: this.$store.state.userEmail,
           password: this.oldPassword,
-        }
+        };
         let newUserJSON = {
           id: this.$store.state.userID,
           email: this.$store.state.userEmail,
           password: this.newPassword,
-        }
+        };
         axios
           .post(`${this.apiUrl}VerifyUser`, oldUserJSON)
           .then((response) => {
-            return response.data
+            return response.data;
           })
           .then(() => {
             axios
               .put(`${this.apiUrl}UpdateUser`, newUserJSON)
               .then((response) => {
-                return response.data
+                return response.data;
               })
               .then(() => {
-                this.oldPassword = ''
-                this.newPassword = ''
-                this.repeatPassword = ''
+                this.oldPassword = "";
+                this.newPassword = "";
+
+                this.repeatPassword = "";
               })
               .catch((error) => {
-                console.log(error)
-              })
+                console.log(error);
+              });
           })
           .catch((error) => {
             if (error.response.status == 500) {
-              this.passwordCheck = false
+              this.passwordCheck = false;
             }
-          })
+          });
       }
     },
     emailVisible() {
       if (this.emailShow == false) {
-        this.emailShow = true
+        this.emailShow = true;
       } else {
-        this.emailShow = false
+        this.emailShow = false;
       }
     },
   },
-}
+};
 </script>
 
 <style scoped>
@@ -164,7 +165,7 @@ export default {
   top: 20%;
   position: absolute;
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   text: black;
   padding: 1%;
   box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 15px;

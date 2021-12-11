@@ -8,18 +8,18 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
+import Vue from "vue";
+import axios from "axios";
+import VueAxios from "vue-axios";
 
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, axios);
 
 export default {
-  name: 'MovingBlock',
+  name: "MovingBlock",
   data() {
-    return {}
+    return {};
   },
-}
+};
 </script>
 
 <style scoped>

@@ -68,75 +68,75 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
+import Vue from "vue";
+import axios from "axios";
+import VueAxios from "vue-axios";
 
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, axios);
 
 export default {
-  name: 'Register',
+  name: "Register",
   data() {
     return {
-      email: '',
-      password: '',
-      repeatPassword: '',
-      apiUrl: 'https://localhost:44333/api/User/',
+      email: "",
+      password: "",
+      repeatPassword: "",
+      apiUrl: "https://localhost:44333/api/User/",
       emailCheck: true,
       userCreated: false,
       emailCreated: null,
-    }
+    };
   },
   computed: {
     matchingPasswords() {
-      return this.password == this.repeatPassword ? true : false
+      return this.password == this.repeatPassword ? true : false;
     },
     passwordLength() {
-      if (this.password == '') return true
+      if (this.password == "") return true;
       else if (this.password.length < 4 && this.password.length > 0)
-        return false
-      else return true
+        return false;
+      else return true;
     },
   },
   methods: {
     async register() {
       if (this.passwordLength) {
         if (this.matchingPasswords) {
-          let userJSON = { email: this.email, password: this.password }
+          let userJSON = { email: this.email, password: this.password };
           axios
             .post(`${this.apiUrl}AddUser`, userJSON)
             .then((response) => {
-              return response.data
+              return response.data;
             })
             .then((data) => {
-              this.userCreate(data.email)
+              this.userCreate(data.email);
             })
             .catch((error) => {
               if (error.response.status == 500) {
-                this.emailCheck = false
+                this.emailCheck = false;
               }
-            })
+            });
         }
       }
     },
     cancel() {
-      ;(this.email = ''), (this.password = ''), (this.repeatPassword = '')
-      this.$store.state.registerView = false
-      this.$store.state.loginView = true
-      this.emailCheck = true
+      (this.email = ""), (this.password = ""), (this.repeatPassword = "");
+      this.$store.state.registerView = false;
+      this.$store.state.loginView = true;
+      this.emailCheck = true;
     },
     userCreate(email) {
-      ;(this.email = ''), (this.password = ''), (this.repeatPassword = '')
-      this.userCreated = true
-      this.emailCreated = email
-      this.emailCheck = true
+      (this.email = ""), (this.password = ""), (this.repeatPassword = "");
+      this.userCreated = true;
+      this.emailCreated = email;
+      this.emailCheck = true;
       setTimeout(() => {
-        this.emailCreated = null
-        this.userCreated = false
-      }, 3000)
+        this.emailCreated = null;
+        this.userCreated = false;
+      }, 3000);
     },
   },
-}
+};
 </script>
 
 <style scoped>

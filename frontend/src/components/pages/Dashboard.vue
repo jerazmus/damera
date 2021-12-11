@@ -5,20 +5,20 @@
 </template>
 
 <script>
-import Navbar from '../actions/Navbar.vue'
+import Navbar from "../actions/Navbar.vue";
 
 export default {
-  name: 'Dashboard',
+  name: "Dashboard",
   components: {
     Navbar,
   },
-}
+};
 </script>
 
 <style scoped>
 .dashboard {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 /* Extra small devices (phones, 600px and down) */

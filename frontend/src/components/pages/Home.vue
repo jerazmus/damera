@@ -8,24 +8,24 @@
 </template>
 
 <script>
-import Forms from '../layout/Forms.vue'
+import Forms from "../layout/Forms.vue";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     Forms,
   },
-}
+};
 </script>
 
 <style scoped>
 .home {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   padding: 0;
   min-height: 100vh;
   height: auto;
-  background: url('../../assets/phone.jpg');
+  background: url("../../assets/phone.jpg");
   background-position: -5% 0%;
   background-attachment: fixed;
   background-repeat: no-repeat;

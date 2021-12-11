@@ -11,17 +11,17 @@
 
 <script>
 export default {
-  name: 'LoginOff',
+  name: "LoginOff",
   data() {
-    return {}
+    return {};
   },
   methods: {
     loginOn() {
-      this.$store.state.registerView = false
-      this.$store.state.loginView = true
+      this.$store.state.registerView = false;
+      this.$store.state.loginView = true;
     },
   },
-}
+};
 </script>
 
 <style scoped>

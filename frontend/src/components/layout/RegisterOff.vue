@@ -10,24 +10,24 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
+import Vue from "vue";
+import axios from "axios";
+import VueAxios from "vue-axios";
 
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, axios);
 
 export default {
-  name: 'RegisterOff',
+  name: "RegisterOff",
   data() {
-    return {}
+    return {};
   },
   methods: {
     registerOn() {
-      this.$store.state.registerView = true
-      this.$store.state.loginView = false
+      this.$store.state.registerView = true;
+      this.$store.state.loginView = false;
     },
   },
-}
+};
 </script>
 
 <style scoped>

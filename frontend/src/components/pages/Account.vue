@@ -6,22 +6,22 @@
 </template>
 
 <script>
-import Navbar from '../actions/Navbar.vue'
-import AccountInfo from '../actions/AccountInfo.vue'
+import Navbar from "../actions/Navbar.vue";
+import AccountInfo from "../actions/AccountInfo.vue";
 
 export default {
-  name: 'Account',
+  name: "Account",
   components: {
     Navbar,
     AccountInfo,
   },
-}
+};
 </script>
 
 <style scoped>
 .account {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 /* Extra small devices (phones, 600px and down) */

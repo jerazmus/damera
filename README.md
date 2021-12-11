@@ -6,14 +6,14 @@ Simple web application that in the future should be able to display expenses on 
 
 Created with:
 
-- .NET Core API
+- .NET 5.0 API
 - Vue.js
 - SQL Server
 
 **(soon)** Tested with:
 
-- Cypress
-- Selenium
+- Cypress (E2E)
+- Selenium (API)
 
 
 ## For development purposes just follow the steps:

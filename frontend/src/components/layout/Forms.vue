@@ -9,14 +9,14 @@
 </template>
 
 <script>
-import Login from '../actions/Login.vue'
-import Register from '../actions/Register.vue'
-import LoginOff from './LoginOff.vue'
-import RegisterOff from './RegisterOff.vue'
-import MovingBlock from './MovingBlock.vue'
+import Login from "../actions/Login.vue";
+import Register from "../actions/Register.vue";
+import LoginOff from "./LoginOff.vue";
+import RegisterOff from "./RegisterOff.vue";
+import MovingBlock from "./MovingBlock.vue";
 
 export default {
-  name: 'Forms',
+  name: "Forms",
   components: {
     Login,
     LoginOff,
@@ -25,10 +25,10 @@ export default {
     MovingBlock,
   },
   data() {
-    return {}
+    return {};
   },
   methods: {},
-}
+};
 </script>
 
 <style scoped>

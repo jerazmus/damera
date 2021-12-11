@@ -17,42 +17,42 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
-import cookie from 'vue-cookies'
+import Vue from "vue";
+import axios from "axios";
+import VueAxios from "vue-axios";
+import cookie from "vue-cookies";
 
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, axios);
 
 export default {
-  name: 'Navbar',
+  name: "Navbar",
   data() {
     return {
-      apiUrl: 'https://localhost:44333/api/Token/',
-    }
+      apiUrl: "https://localhost:44333/api/Token/",
+    };
   },
   methods: {
     logout() {
       axios
         .delete(`${this.apiUrl}Logout/${this.$store.state.userID}`)
         .then((response) => {
-          cookie.remove('damera')
-          this.$router.push('/')
-          return response.data
+          cookie.remove("damera");
+          this.$router.push("/");
+          return response.data;
         })
         .catch((error) => {
-          console.log(error)
-          this.$router.push('/')
-        })
+          console.log(error);
+          this.$router.push("/");
+        });
     },
     account() {
-      this.$router.push('/account')
+      this.$router.push("/account");
     },
     dashboard() {
-      this.$router.push('/dashboard')
+      this.$router.push("/dashboard");
     },
   },
-}
+};
 </script>
 
 <style scoped>

@@ -5,43 +5,43 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
-import cookie from 'vue-cookies'
+import Vue from "vue";
+import axios from "axios";
+import VueAxios from "vue-axios";
+import cookie from "vue-cookies";
 
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, axios);
 
 export default {
-  name: 'App',
+  name: "App",
   data() {
     return {
-      apiUrl: 'https://localhost:44333/api/Token/',
-    }
+      apiUrl: "https://localhost:44333/api/Token/",
+    };
   },
   components: {},
   mounted() {
-    let token = cookie.get('damera')
-    let userToken = token.token
+    let token = cookie.get("damera");
+    let userToken = token.token;
 
     axios
       .get(this.apiUrl + `Verify`, { params: { userToken } })
       .then((response) => {
-        return response.data
+        return response.data;
       })
       .then((data) => {
-        this.$store.state.logged = true
-        this.$store.state.userEmail = data.email
-        this.$store.state.userID = data.id
-        this.$router.push('/dashboard')
+        this.$store.state.logged = true;
+        this.$store.state.userEmail = data.email;
+        this.$store.state.userID = data.id;
+        this.$router.push("/dashboard");
       })
       .catch((error) => {
         if (error.response.status == 500) {
-          alert('Błąd!')
+          alert("Błąd!");
         }
-      })
+      });
   },
-}
+};
 </script>
 
 <style>
